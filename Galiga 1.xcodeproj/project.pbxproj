@@ -1,0 +1,515 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B1EDA4EB1D05B78A00F4D940 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EDA4EA1D05B78A00F4D940 /* AppDelegate.swift */; };
+		B1EDA4ED1D05B78A00F4D940 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B1EDA4EC1D05B78A00F4D940 /* GameScene.sks */; };
+		B1EDA4EF1D05B78A00F4D940 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EDA4EE1D05B78A00F4D940 /* GameScene.swift */; };
+		B1EDA4F11D05B78A00F4D940 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EDA4F01D05B78A00F4D940 /* GameViewController.swift */; };
+		B1EDA4F41D05B78A00F4D940 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1EDA4F21D05B78A00F4D940 /* Main.storyboard */; };
+		B1EDA4F61D05B78A00F4D940 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1EDA4F51D05B78A00F4D940 /* Assets.xcassets */; };
+		B1EDA4F91D05B78A00F4D940 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1EDA4F71D05B78A00F4D940 /* LaunchScreen.storyboard */; };
+		B1EDA5041D05B78B00F4D940 /* Galiga_1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EDA5031D05B78B00F4D940 /* Galiga_1Tests.swift */; };
+		B1EDA50F1D05B78B00F4D940 /* Galiga_1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EDA50E1D05B78B00F4D940 /* Galiga_1UITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B1EDA5001D05B78B00F4D940 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1EDA4DF1D05B78A00F4D940 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B1EDA4E61D05B78A00F4D940;
+			remoteInfo = "Galiga 1";
+		};
+		B1EDA50B1D05B78B00F4D940 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1EDA4DF1D05B78A00F4D940 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B1EDA4E61D05B78A00F4D940;
+			remoteInfo = "Galiga 1";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B1EDA4E71D05B78A00F4D940 /* Galiga 1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Galiga 1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1EDA4EA1D05B78A00F4D940 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B1EDA4EC1D05B78A00F4D940 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		B1EDA4EE1D05B78A00F4D940 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		B1EDA4F01D05B78A00F4D940 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		B1EDA4F31D05B78A00F4D940 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B1EDA4F51D05B78A00F4D940 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B1EDA4F81D05B78A00F4D940 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B1EDA4FA1D05B78A00F4D940 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1EDA4FF1D05B78B00F4D940 /* Galiga 1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Galiga 1Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1EDA5031D05B78B00F4D940 /* Galiga_1Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Galiga_1Tests.swift; sourceTree = "<group>"; };
+		B1EDA5051D05B78B00F4D940 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1EDA50A1D05B78B00F4D940 /* Galiga 1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Galiga 1UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1EDA50E1D05B78B00F4D940 /* Galiga_1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Galiga_1UITests.swift; sourceTree = "<group>"; };
+		B1EDA5101D05B78B00F4D940 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B1EDA4E41D05B78A00F4D940 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1EDA4FC1D05B78B00F4D940 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1EDA5071D05B78B00F4D940 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B1EDA4DE1D05B78A00F4D940 = {
+			isa = PBXGroup;
+			children = (
+				B1EDA4E91D05B78A00F4D940 /* Galiga 1 */,
+				B1EDA5021D05B78B00F4D940 /* Galiga 1Tests */,
+				B1EDA50D1D05B78B00F4D940 /* Galiga 1UITests */,
+				B1EDA4E81D05B78A00F4D940 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B1EDA4E81D05B78A00F4D940 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B1EDA4E71D05B78A00F4D940 /* Galiga 1.app */,
+				B1EDA4FF1D05B78B00F4D940 /* Galiga 1Tests.xctest */,
+				B1EDA50A1D05B78B00F4D940 /* Galiga 1UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B1EDA4E91D05B78A00F4D940 /* Galiga 1 */ = {
+			isa = PBXGroup;
+			children = (
+				B1EDA4EA1D05B78A00F4D940 /* AppDelegate.swift */,
+				B1EDA4EC1D05B78A00F4D940 /* GameScene.sks */,
+				B1EDA4EE1D05B78A00F4D940 /* GameScene.swift */,
+				B1EDA4F01D05B78A00F4D940 /* GameViewController.swift */,
+				B1EDA4F21D05B78A00F4D940 /* Main.storyboard */,
+				B1EDA4F51D05B78A00F4D940 /* Assets.xcassets */,
+				B1EDA4F71D05B78A00F4D940 /* LaunchScreen.storyboard */,
+				B1EDA4FA1D05B78A00F4D940 /* Info.plist */,
+			);
+			path = "Galiga 1";
+			sourceTree = "<group>";
+		};
+		B1EDA5021D05B78B00F4D940 /* Galiga 1Tests */ = {
+			isa = PBXGroup;
+			children = (
+				B1EDA5031D05B78B00F4D940 /* Galiga_1Tests.swift */,
+				B1EDA5051D05B78B00F4D940 /* Info.plist */,
+			);
+			path = "Galiga 1Tests";
+			sourceTree = "<group>";
+		};
+		B1EDA50D1D05B78B00F4D940 /* Galiga 1UITests */ = {
+			isa = PBXGroup;
+			children = (
+				B1EDA50E1D05B78B00F4D940 /* Galiga_1UITests.swift */,
+				B1EDA5101D05B78B00F4D940 /* Info.plist */,
+			);
+			path = "Galiga 1UITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B1EDA4E61D05B78A00F4D940 /* Galiga 1 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1EDA5131D05B78B00F4D940 /* Build configuration list for PBXNativeTarget "Galiga 1" */;
+			buildPhases = (
+				B1EDA4E31D05B78A00F4D940 /* Sources */,
+				B1EDA4E41D05B78A00F4D940 /* Frameworks */,
+				B1EDA4E51D05B78A00F4D940 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Galiga 1";
+			productName = "Galiga 1";
+			productReference = B1EDA4E71D05B78A00F4D940 /* Galiga 1.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B1EDA4FE1D05B78B00F4D940 /* Galiga 1Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1EDA5161D05B78B00F4D940 /* Build configuration list for PBXNativeTarget "Galiga 1Tests" */;
+			buildPhases = (
+				B1EDA4FB1D05B78B00F4D940 /* Sources */,
+				B1EDA4FC1D05B78B00F4D940 /* Frameworks */,
+				B1EDA4FD1D05B78B00F4D940 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B1EDA5011D05B78B00F4D940 /* PBXTargetDependency */,
+			);
+			name = "Galiga 1Tests";
+			productName = "Galiga 1Tests";
+			productReference = B1EDA4FF1D05B78B00F4D940 /* Galiga 1Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B1EDA5091D05B78B00F4D940 /* Galiga 1UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1EDA5191D05B78B00F4D940 /* Build configuration list for PBXNativeTarget "Galiga 1UITests" */;
+			buildPhases = (
+				B1EDA5061D05B78B00F4D940 /* Sources */,
+				B1EDA5071D05B78B00F4D940 /* Frameworks */,
+				B1EDA5081D05B78B00F4D940 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B1EDA50C1D05B78B00F4D940 /* PBXTargetDependency */,
+			);
+			name = "Galiga 1UITests";
+			productName = "Galiga 1UITests";
+			productReference = B1EDA50A1D05B78B00F4D940 /* Galiga 1UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B1EDA4DF1D05B78A00F4D940 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Rodrigo Ferreira";
+				TargetAttributes = {
+					B1EDA4E61D05B78A00F4D940 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					B1EDA4FE1D05B78B00F4D940 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = B1EDA4E61D05B78A00F4D940;
+					};
+					B1EDA5091D05B78B00F4D940 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = B1EDA4E61D05B78A00F4D940;
+					};
+				};
+			};
+			buildConfigurationList = B1EDA4E21D05B78A00F4D940 /* Build configuration list for PBXProject "Galiga 1" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B1EDA4DE1D05B78A00F4D940;
+			productRefGroup = B1EDA4E81D05B78A00F4D940 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B1EDA4E61D05B78A00F4D940 /* Galiga 1 */,
+				B1EDA4FE1D05B78B00F4D940 /* Galiga 1Tests */,
+				B1EDA5091D05B78B00F4D940 /* Galiga 1UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B1EDA4E51D05B78A00F4D940 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1EDA4ED1D05B78A00F4D940 /* GameScene.sks in Resources */,
+				B1EDA4F91D05B78A00F4D940 /* LaunchScreen.storyboard in Resources */,
+				B1EDA4F61D05B78A00F4D940 /* Assets.xcassets in Resources */,
+				B1EDA4F41D05B78A00F4D940 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1EDA4FD1D05B78B00F4D940 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1EDA5081D05B78B00F4D940 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B1EDA4E31D05B78A00F4D940 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1EDA4EF1D05B78A00F4D940 /* GameScene.swift in Sources */,
+				B1EDA4F11D05B78A00F4D940 /* GameViewController.swift in Sources */,
+				B1EDA4EB1D05B78A00F4D940 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1EDA4FB1D05B78B00F4D940 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1EDA5041D05B78B00F4D940 /* Galiga_1Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1EDA5061D05B78B00F4D940 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1EDA50F1D05B78B00F4D940 /* Galiga_1UITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B1EDA5011D05B78B00F4D940 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B1EDA4E61D05B78A00F4D940 /* Galiga 1 */;
+			targetProxy = B1EDA5001D05B78B00F4D940 /* PBXContainerItemProxy */;
+		};
+		B1EDA50C1D05B78B00F4D940 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B1EDA4E61D05B78A00F4D940 /* Galiga 1 */;
+			targetProxy = B1EDA50B1D05B78B00F4D940 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B1EDA4F21D05B78A00F4D940 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B1EDA4F31D05B78A00F4D940 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B1EDA4F71D05B78A00F4D940 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B1EDA4F81D05B78A00F4D940 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B1EDA5111D05B78B00F4D940 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B1EDA5121D05B78B00F4D940 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B1EDA5141D05B78B00F4D940 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Galiga 1/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "rf.Galiga-1";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B1EDA5151D05B78B00F4D940 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Galiga 1/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "rf.Galiga-1";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		B1EDA5171D05B78B00F4D940 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = "Galiga 1Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "rf.Galiga-1Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Galiga 1.app/Galiga 1";
+			};
+			name = Debug;
+		};
+		B1EDA5181D05B78B00F4D940 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Galiga 1Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "rf.Galiga-1Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Galiga 1.app/Galiga 1";
+			};
+			name = Release;
+		};
+		B1EDA51A1D05B78B00F4D940 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = "Galiga 1UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "rf.Galiga-1UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Galiga 1";
+			};
+			name = Debug;
+		};
+		B1EDA51B1D05B78B00F4D940 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Galiga 1UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "rf.Galiga-1UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Galiga 1";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B1EDA4E21D05B78A00F4D940 /* Build configuration list for PBXProject "Galiga 1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1EDA5111D05B78B00F4D940 /* Debug */,
+				B1EDA5121D05B78B00F4D940 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1EDA5131D05B78B00F4D940 /* Build configuration list for PBXNativeTarget "Galiga 1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1EDA5141D05B78B00F4D940 /* Debug */,
+				B1EDA5151D05B78B00F4D940 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B1EDA5161D05B78B00F4D940 /* Build configuration list for PBXNativeTarget "Galiga 1Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1EDA5171D05B78B00F4D940 /* Debug */,
+				B1EDA5181D05B78B00F4D940 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B1EDA5191D05B78B00F4D940 /* Build configuration list for PBXNativeTarget "Galiga 1UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1EDA51A1D05B78B00F4D940 /* Debug */,
+				B1EDA51B1D05B78B00F4D940 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B1EDA4DF1D05B78A00F4D940 /* Project object */;
+}
