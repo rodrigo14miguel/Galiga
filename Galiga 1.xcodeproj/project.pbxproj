@@ -7,6 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B11436271D0883030078425D /* BlastBullet.png in Resources */ = {isa = PBXBuildFile; fileRef = B11436251D0883030078425D /* BlastBullet.png */; };
+		B11436281D0883030078425D /* PowerUpBlast.png in Resources */ = {isa = PBXBuildFile; fileRef = B11436261D0883030078425D /* PowerUpBlast.png */; };
+		B134C7C01D071D4400BEA15C /* MagicParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = B134C7BE1D071D4400BEA15C /* MagicParticle.sks */; };
+		B134C7C11D071D4400BEA15C /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = B134C7BF1D071D4400BEA15C /* spark.png */; };
+		B17639791D075524006F293A /* Lazor_beam.png in Resources */ = {isa = PBXBuildFile; fileRef = B17639781D075524006F293A /* Lazor_beam.png */; };
+		B176397B1D0758BB006F293A /* PowerUpLazor.png in Resources */ = {isa = PBXBuildFile; fileRef = B176397A1D0758BB006F293A /* PowerUpLazor.png */; };
+		B17F47D31D0E37770035B77A /* WUp.png in Resources */ = {isa = PBXBuildFile; fileRef = B17F47D21D0E37770035B77A /* WUp.png */; };
+		B195AA3A1D08DFA30030B395 /* Lazor_head.png in Resources */ = {isa = PBXBuildFile; fileRef = B195AA391D08DFA30030B395 /* Lazor_head.png */; };
+		B195AA3C1D08DFE70030B395 /* Lazor_ring.png in Resources */ = {isa = PBXBuildFile; fileRef = B195AA3B1D08DFE70030B395 /* Lazor_ring.png */; };
+		B1A42AB51D0F6C8B00079727 /* back_beam_front.png in Resources */ = {isa = PBXBuildFile; fileRef = B1A42AB31D0F6C8B00079727 /* back_beam_front.png */; };
+		B1A42AB61D0F6C8B00079727 /* back_beam_rear.png in Resources */ = {isa = PBXBuildFile; fileRef = B1A42AB41D0F6C8B00079727 /* back_beam_rear.png */; };
+		B1A42AB81D0F78EF00079727 /* back_beam_rearS.png in Resources */ = {isa = PBXBuildFile; fileRef = B1A42AB71D0F78EF00079727 /* back_beam_rearS.png */; };
+		B1A42ABA1D0F8C7900079727 /* PowerUpBeam.png in Resources */ = {isa = PBXBuildFile; fileRef = B1A42AB91D0F8C7900079727 /* PowerUpBeam.png */; };
+		B1B7442F1D0A225700675651 /* Lazor_head.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B1B7442E1D0A225700675651 /* Lazor_head.atlas */; };
+		B1B7443D1D0B8EDA00675651 /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B1B7443C1D0B8EDA00675651 /* StartScene.sks */; };
+		B1B7443F1D0B8F0300675651 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B7443E1D0B8F0300675651 /* StartScene.swift */; };
+		B1B7447F1D0B9BF700675651 /* Lazor_beam.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B1B7447E1D0B9BF700675651 /* Lazor_beam.atlas */; };
+		B1B744811D0B9FD100675651 /* EnemyClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B744801D0B9FD100675651 /* EnemyClass.swift */; };
+		B1D085801D14DCDB00F0305B /* back_beam_front_left.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B1D0857E1D14DCDB00F0305B /* back_beam_front_left.atlas */; };
+		B1D085811D14DCDB00F0305B /* back_beam_front_right.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B1D0857F1D14DCDB00F0305B /* back_beam_front_right.atlas */; };
+		B1D085841D14E20B00F0305B /* back_beam_rear_right.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B1D085821D14E20B00F0305B /* back_beam_rear_right.atlas */; };
+		B1D085851D14E20B00F0305B /* back_beam_rear_left.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B1D085831D14E20B00F0305B /* back_beam_rear_left.atlas */; };
+		B1DB4B911D0610E800C917CB /* 9-inc jetL.png in Resources */ = {isa = PBXBuildFile; fileRef = B1DB4B8E1D0610E800C917CB /* 9-inc jetL.png */; };
+		B1DB4B921D0610E800C917CB /* 9-inc jetR.png in Resources */ = {isa = PBXBuildFile; fileRef = B1DB4B8F1D0610E800C917CB /* 9-inc jetR.png */; };
+		B1DB4B931D0610E800C917CB /* 9-inc jet4.png in Resources */ = {isa = PBXBuildFile; fileRef = B1DB4B901D0610E800C917CB /* 9-inc jet4.png */; };
+		B1DB4B951D0625FF00C917CB /* 9-inc jet3.png in Resources */ = {isa = PBXBuildFile; fileRef = B1DB4B941D0625FF00C917CB /* 9-inc jet3.png */; };
+		B1DB4B9D1D06673200C917CB /* Enemy2.png in Resources */ = {isa = PBXBuildFile; fileRef = B1DB4B9A1D06673200C917CB /* Enemy2.png */; };
+		B1DB4B9E1D06673200C917CB /* Enemy1.png in Resources */ = {isa = PBXBuildFile; fileRef = B1DB4B9B1D06673200C917CB /* Enemy1.png */; };
+		B1DB4B9F1D06673200C917CB /* 9-inc.png in Resources */ = {isa = PBXBuildFile; fileRef = B1DB4B9C1D06673200C917CB /* 9-inc.png */; };
+		B1DB4BA51D0679D700C917CB /* EndScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DB4BA41D0679D700C917CB /* EndScene.swift */; };
 		B1EDA4EB1D05B78A00F4D940 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EDA4EA1D05B78A00F4D940 /* AppDelegate.swift */; };
 		B1EDA4ED1D05B78A00F4D940 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B1EDA4EC1D05B78A00F4D940 /* GameScene.sks */; };
 		B1EDA4EF1D05B78A00F4D940 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EDA4EE1D05B78A00F4D940 /* GameScene.swift */; };
@@ -16,6 +46,8 @@
 		B1EDA4F91D05B78A00F4D940 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1EDA4F71D05B78A00F4D940 /* LaunchScreen.storyboard */; };
 		B1EDA5041D05B78B00F4D940 /* Galiga_1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EDA5031D05B78B00F4D940 /* Galiga_1Tests.swift */; };
 		B1EDA50F1D05B78B00F4D940 /* Galiga_1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EDA50E1D05B78B00F4D940 /* Galiga_1UITests.swift */; };
+		B1EDA5201D05BC8F00F4D940 /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = B1EDA51E1D05BC8F00F4D940 /* bullet.png */; };
+		B1F7923F1D15BD2900DB9752 /* gameSounds in Resources */ = {isa = PBXBuildFile; fileRef = B1F7923E1D15BD2900DB9752 /* gameSounds */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +68,36 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B11436251D0883030078425D /* BlastBullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlastBullet.png; sourceTree = "<group>"; };
+		B11436261D0883030078425D /* PowerUpBlast.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PowerUpBlast.png; sourceTree = "<group>"; };
+		B134C7BE1D071D4400BEA15C /* MagicParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = MagicParticle.sks; path = ../MagicParticle.sks; sourceTree = "<group>"; };
+		B134C7BF1D071D4400BEA15C /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spark.png; path = ../spark.png; sourceTree = "<group>"; };
+		B17639781D075524006F293A /* Lazor_beam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lazor_beam.png; sourceTree = "<group>"; };
+		B176397A1D0758BB006F293A /* PowerUpLazor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PowerUpLazor.png; sourceTree = "<group>"; };
+		B17F47D21D0E37770035B77A /* WUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WUp.png; sourceTree = "<group>"; };
+		B195AA391D08DFA30030B395 /* Lazor_head.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lazor_head.png; sourceTree = "<group>"; };
+		B195AA3B1D08DFE70030B395 /* Lazor_ring.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lazor_ring.png; sourceTree = "<group>"; };
+		B1A42AB31D0F6C8B00079727 /* back_beam_front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_beam_front.png; sourceTree = "<group>"; };
+		B1A42AB41D0F6C8B00079727 /* back_beam_rear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_beam_rear.png; sourceTree = "<group>"; };
+		B1A42AB71D0F78EF00079727 /* back_beam_rearS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_beam_rearS.png; sourceTree = "<group>"; };
+		B1A42AB91D0F8C7900079727 /* PowerUpBeam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PowerUpBeam.png; sourceTree = "<group>"; };
+		B1B7442E1D0A225700675651 /* Lazor_head.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Lazor_head.atlas; sourceTree = "<group>"; };
+		B1B7443C1D0B8EDA00675651 /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = StartScene.sks; path = ../StartScene.sks; sourceTree = "<group>"; };
+		B1B7443E1D0B8F0300675651 /* StartScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StartScene.swift; path = ../StartScene.swift; sourceTree = "<group>"; };
+		B1B7447E1D0B9BF700675651 /* Lazor_beam.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Lazor_beam.atlas; sourceTree = "<group>"; };
+		B1B744801D0B9FD100675651 /* EnemyClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyClass.swift; sourceTree = "<group>"; };
+		B1D0857E1D14DCDB00F0305B /* back_beam_front_left.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = back_beam_front_left.atlas; sourceTree = "<group>"; };
+		B1D0857F1D14DCDB00F0305B /* back_beam_front_right.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = back_beam_front_right.atlas; sourceTree = "<group>"; };
+		B1D085821D14E20B00F0305B /* back_beam_rear_right.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = back_beam_rear_right.atlas; sourceTree = "<group>"; };
+		B1D085831D14E20B00F0305B /* back_beam_rear_left.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = back_beam_rear_left.atlas; sourceTree = "<group>"; };
+		B1DB4B8E1D0610E800C917CB /* 9-inc jetL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "9-inc jetL.png"; sourceTree = "<group>"; };
+		B1DB4B8F1D0610E800C917CB /* 9-inc jetR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "9-inc jetR.png"; sourceTree = "<group>"; };
+		B1DB4B901D0610E800C917CB /* 9-inc jet4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "9-inc jet4.png"; sourceTree = "<group>"; };
+		B1DB4B941D0625FF00C917CB /* 9-inc jet3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "9-inc jet3.png"; sourceTree = "<group>"; };
+		B1DB4B9A1D06673200C917CB /* Enemy2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Enemy2.png; sourceTree = "<group>"; };
+		B1DB4B9B1D06673200C917CB /* Enemy1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Enemy1.png; sourceTree = "<group>"; };
+		B1DB4B9C1D06673200C917CB /* 9-inc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "9-inc.png"; sourceTree = "<group>"; };
+		B1DB4BA41D0679D700C917CB /* EndScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EndScene.swift; path = ../EndScene.swift; sourceTree = "<group>"; };
 		B1EDA4E71D05B78A00F4D940 /* Galiga 1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Galiga 1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1EDA4EA1D05B78A00F4D940 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1EDA4EC1D05B78A00F4D940 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -51,6 +113,8 @@
 		B1EDA50A1D05B78B00F4D940 /* Galiga 1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Galiga 1UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1EDA50E1D05B78B00F4D940 /* Galiga_1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Galiga_1UITests.swift; sourceTree = "<group>"; };
 		B1EDA5101D05B78B00F4D940 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1EDA51E1D05BC8F00F4D940 /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
+		B1F7923E1D15BD2900DB9752 /* gameSounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = gameSounds; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,11 +165,25 @@
 		B1EDA4E91D05B78A00F4D940 /* Galiga 1 */ = {
 			isa = PBXGroup;
 			children = (
-				B1EDA4EA1D05B78A00F4D940 /* AppDelegate.swift */,
+				B134C7BE1D071D4400BEA15C /* MagicParticle.sks */,
+				B134C7BF1D071D4400BEA15C /* spark.png */,
+				B1B7443C1D0B8EDA00675651 /* StartScene.sks */,
 				B1EDA4EC1D05B78A00F4D940 /* GameScene.sks */,
+				B1EDA4EA1D05B78A00F4D940 /* AppDelegate.swift */,
+				B1DB4BA41D0679D700C917CB /* EndScene.swift */,
 				B1EDA4EE1D05B78A00F4D940 /* GameScene.swift */,
+				B1B744801D0B9FD100675651 /* EnemyClass.swift */,
+				B1B7443E1D0B8F0300675651 /* StartScene.swift */,
 				B1EDA4F01D05B78A00F4D940 /* GameViewController.swift */,
 				B1EDA4F21D05B78A00F4D940 /* Main.storyboard */,
+				B1F7923E1D15BD2900DB9752 /* gameSounds */,
+				B1D085821D14E20B00F0305B /* back_beam_rear_right.atlas */,
+				B1D085831D14E20B00F0305B /* back_beam_rear_left.atlas */,
+				B1D0857E1D14DCDB00F0305B /* back_beam_front_left.atlas */,
+				B1D0857F1D14DCDB00F0305B /* back_beam_front_right.atlas */,
+				B1B7447E1D0B9BF700675651 /* Lazor_beam.atlas */,
+				B1B7442E1D0A225700675651 /* Lazor_head.atlas */,
+				B1EDA51C1D05BC8000F4D940 /* images */,
 				B1EDA4F51D05B78A00F4D940 /* Assets.xcassets */,
 				B1EDA4F71D05B78A00F4D940 /* LaunchScreen.storyboard */,
 				B1EDA4FA1D05B78A00F4D940 /* Info.plist */,
@@ -129,6 +207,32 @@
 				B1EDA5101D05B78B00F4D940 /* Info.plist */,
 			);
 			path = "Galiga 1UITests";
+			sourceTree = "<group>";
+		};
+		B1EDA51C1D05BC8000F4D940 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				B17F47D21D0E37770035B77A /* WUp.png */,
+				B1A42AB91D0F8C7900079727 /* PowerUpBeam.png */,
+				B1A42AB71D0F78EF00079727 /* back_beam_rearS.png */,
+				B1A42AB31D0F6C8B00079727 /* back_beam_front.png */,
+				B1A42AB41D0F6C8B00079727 /* back_beam_rear.png */,
+				B17639781D075524006F293A /* Lazor_beam.png */,
+				B11436251D0883030078425D /* BlastBullet.png */,
+				B11436261D0883030078425D /* PowerUpBlast.png */,
+				B176397A1D0758BB006F293A /* PowerUpLazor.png */,
+				B195AA391D08DFA30030B395 /* Lazor_head.png */,
+				B195AA3B1D08DFE70030B395 /* Lazor_ring.png */,
+				B1DB4B8E1D0610E800C917CB /* 9-inc jetL.png */,
+				B1DB4B9A1D06673200C917CB /* Enemy2.png */,
+				B1DB4B9B1D06673200C917CB /* Enemy1.png */,
+				B1DB4B9C1D06673200C917CB /* 9-inc.png */,
+				B1DB4B8F1D0610E800C917CB /* 9-inc jetR.png */,
+				B1DB4B941D0625FF00C917CB /* 9-inc jet3.png */,
+				B1DB4B901D0610E800C917CB /* 9-inc jet4.png */,
+				B1EDA51E1D05BC8F00F4D940 /* bullet.png */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,10 +339,39 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1D085851D14E20B00F0305B /* back_beam_rear_left.atlas in Resources */,
+				B1D085801D14DCDB00F0305B /* back_beam_front_left.atlas in Resources */,
+				B1DB4B9E1D06673200C917CB /* Enemy1.png in Resources */,
+				B1DB4B931D0610E800C917CB /* 9-inc jet4.png in Resources */,
+				B1DB4B951D0625FF00C917CB /* 9-inc jet3.png in Resources */,
+				B134C7C11D071D4400BEA15C /* spark.png in Resources */,
+				B195AA3C1D08DFE70030B395 /* Lazor_ring.png in Resources */,
+				B11436281D0883030078425D /* PowerUpBlast.png in Resources */,
+				B1D085841D14E20B00F0305B /* back_beam_rear_right.atlas in Resources */,
+				B1D085811D14DCDB00F0305B /* back_beam_front_right.atlas in Resources */,
+				B1A42AB81D0F78EF00079727 /* back_beam_rearS.png in Resources */,
+				B1A42AB51D0F6C8B00079727 /* back_beam_front.png in Resources */,
+				B17F47D31D0E37770035B77A /* WUp.png in Resources */,
+				B11436271D0883030078425D /* BlastBullet.png in Resources */,
 				B1EDA4ED1D05B78A00F4D940 /* GameScene.sks in Resources */,
+				B1DB4B9F1D06673200C917CB /* 9-inc.png in Resources */,
+				B1EDA5201D05BC8F00F4D940 /* bullet.png in Resources */,
+				B195AA3A1D08DFA30030B395 /* Lazor_head.png in Resources */,
 				B1EDA4F91D05B78A00F4D940 /* LaunchScreen.storyboard in Resources */,
 				B1EDA4F61D05B78A00F4D940 /* Assets.xcassets in Resources */,
+				B1B7447F1D0B9BF700675651 /* Lazor_beam.atlas in Resources */,
 				B1EDA4F41D05B78A00F4D940 /* Main.storyboard in Resources */,
+				B1DB4B921D0610E800C917CB /* 9-inc jetR.png in Resources */,
+				B176397B1D0758BB006F293A /* PowerUpLazor.png in Resources */,
+				B1F7923F1D15BD2900DB9752 /* gameSounds in Resources */,
+				B1DB4B911D0610E800C917CB /* 9-inc jetL.png in Resources */,
+				B1B7442F1D0A225700675651 /* Lazor_head.atlas in Resources */,
+				B1A42AB61D0F6C8B00079727 /* back_beam_rear.png in Resources */,
+				B17639791D075524006F293A /* Lazor_beam.png in Resources */,
+				B1B7443D1D0B8EDA00675651 /* StartScene.sks in Resources */,
+				B1A42ABA1D0F8C7900079727 /* PowerUpBeam.png in Resources */,
+				B134C7C01D071D4400BEA15C /* MagicParticle.sks in Resources */,
+				B1DB4B9D1D06673200C917CB /* Enemy2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +398,9 @@
 			files = (
 				B1EDA4EF1D05B78A00F4D940 /* GameScene.swift in Sources */,
 				B1EDA4F11D05B78A00F4D940 /* GameViewController.swift in Sources */,
+				B1DB4BA51D0679D700C917CB /* EndScene.swift in Sources */,
+				B1B744811D0B9FD100675651 /* EnemyClass.swift in Sources */,
+				B1B7443F1D0B8F0300675651 /* StartScene.swift in Sources */,
 				B1EDA4EB1D05B78A00F4D940 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -492,6 +628,7 @@
 				B1EDA5151D05B78B00F4D940 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B1EDA5161D05B78B00F4D940 /* Build configuration list for PBXNativeTarget "Galiga 1Tests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +637,7 @@
 				B1EDA5181D05B78B00F4D940 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B1EDA5191D05B78B00F4D940 /* Build configuration list for PBXNativeTarget "Galiga 1UITests" */ = {
 			isa = XCConfigurationList;
@@ -508,6 +646,7 @@
 				B1EDA51B1D05B78B00F4D940 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
