@@ -65,7 +65,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         do {
             let sound = try AVAudioPlayer(contentsOfURL: url)
             audioPlayer = sound
-            
             sound.volume = 0.65
             let seconds = 1.0//Time To Delay
             let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
