@@ -22,6 +22,7 @@ struct PhysicsCatagory {
     static let PowerUpLazor: UInt32 = 11
     static let PowerUpBlast: UInt32 = 12
     static let PowerUpBeam: UInt32 = 13
+    static let DeadBody: UInt32 = 100
 }
 
 
@@ -305,7 +306,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func collisionWithBeam (Enemy: EnemyClass,Beam: SKSpriteNode, points: Int){
         if Enemy.decreaseHealth(1){
-            Enemy.removeFromParent()
             Score += points
             ScoreLabel.text = "Score: \(Score)"
         }else{
