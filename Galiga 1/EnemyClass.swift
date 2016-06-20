@@ -54,7 +54,21 @@ class EnemyClass: SKSpriteNode {
                     // couldn't load file :(
                 }
                 self.removeAllActions()
-                self.runAction(SKAction.fadeOutWithDuration(1.5))
+                
+                var TextureAtlas = SKTextureAtlas()
+                TextureAtlas = SKTextureAtlas(named: "Enemy2_explosion")
+                
+                for i in 1...TextureAtlas.textureNames.count{
+                    explosion.append(SKTexture(imageNamed: "Enemy2_explosion\(i).png"))
+                }
+                
+                enemy_explosion = SKSpriteNode(imageNamed: "Enemy2_explosion1.png")
+                enemy_explosion.setScale(0.2)
+                self.texture = SKTexture(imageNamed: "Enemy2_explosion1.png")
+                self.size = CGSize(width: enemy_explosion.size.width, height: enemy_explosion.size.height)
+                self.runAction(SKAction.animateWithTextures(explosion, timePerFrame: 0.037))
+                
+                
                 let dispatchTime1 = dispatch_time(DISPATCH_TIME_NOW, Int64(3.0 * Double(NSEC_PER_SEC)))
                 
                 dispatch_after(dispatchTime1, dispatch_get_main_queue(), {
