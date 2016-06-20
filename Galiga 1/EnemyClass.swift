@@ -18,6 +18,8 @@ class EnemyClass: SKSpriteNode {
     var audioPlayer1: AVAudioPlayer!
     var audioPlayer2: AVAudioPlayer!
     var audioPlayer3: AVAudioPlayer!
+    var explosion = [SKTexture]()
+    var enemy_explosion = SKSpriteNode()
     
     func decreaseHealth(damage:Int) -> Bool{
         self.health -= damage
@@ -72,52 +74,30 @@ class EnemyClass: SKSpriteNode {
                     // couldn't load file :(
                 }
                 self.removeAllActions()
-                self.runAction(SKAction.fadeOutWithDuration(0.5))
-                let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
                 
+                var TextureAtlas = SKTextureAtlas()
+                TextureAtlas = SKTextureAtlas(named: "Enemy1_explosion")
+                
+                for i in 1...TextureAtlas.textureNames.count{
+                    explosion.append(SKTexture(imageNamed: "Enemy1_explosion\(i).png"))
+                }
+                
+                enemy_explosion = SKSpriteNode(imageNamed: "Enemy1_explosion1.png")
+                enemy_explosion.setScale(0.1)
+                self.texture = SKTexture(imageNamed: "Enemy1_explosion1.png")
+                self.size = CGSize(width: enemy_explosion.size.width, height: enemy_explosion.size.height)
+                self.runAction(SKAction.animateWithTextures(explosion, timePerFrame: 0.037))
+                
+                let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
                 dispatch_after(dispatchTime, dispatch_get_main_queue(), {
                     self.removeFromParent()
                 })
 
             }
-            //            self.lazorTimer.invalidate()
             return true
         }else{
             return false
         }
     }
-    
-    //    func lazorDamage_on(animationTimeLeft: Int) {
-    //        if self.health > 0 && lazorContact == false {
-    //            lazorContact = true
-    //            lazorAnimationLeft = animationTimeLeft
-    //            lazorTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(EnemyClass.blinkEnemy), userInfo: nil, repeats: true)
-    //
-    //        }
-    //    }
-    
-    //    func lazorDamage_off(){
-    //        self.lazorTimer.invalidate()
-    //        lazorContact = false
-    //        NSLog("INVALIDATE")
-    //    }
-    
-    
-    //    func blinkEnemy() {
-    //        NSLog("\(self.health)")
-    //        lazorAnimationLeft -= 2
-    //        if self.decreaseHealth() == false  && lazorAnimationLeft >= 1{
-    //        self.runAction(SKAction.sequence([SKAction.fadeOutWithDuration(0.05),SKAction.fadeInWithDuration(0.01)]))
-    //        }else{
-    //            self.lazorTimer.invalidate()
-    ////            let ScoreDefault = NSUserDefaults.standardUserDefaults()
-    ////            var Score = ScoreDefault.valueForKey("Score") as! NSInteger
-    ////            Score += Points
-    //        }
-    ////        if self.health <= 0{
-    ////            self.lazorTimer.invalidate()
-    ////            
-    ////        }
-    //    }
     
 }

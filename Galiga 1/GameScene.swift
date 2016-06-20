@@ -216,8 +216,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if firstBody.node as? SKSpriteNode != nil && secondBody.node as? SKSpriteNode != nil {
             if ((firstBody.categoryBitMask == PhysicsCatagory.Enemy1) && (secondBody.categoryBitMask == PhysicsCatagory.Bullet)) || ((firstBody.categoryBitMask == PhysicsCatagory.Bullet) && (secondBody.categoryBitMask == PhysicsCatagory.Enemy1)){
-                if let enemy = firstBody.node as? EnemyClass{
-                    collisionWithBullet(enemy, Bullet: secondBody.node as! SKSpriteNode, points: 1)
+                if firstBody.categoryBitMask == PhysicsCatagory.Enemy1{
+                    collisionWithBullet(firstBody.node as! EnemyClass, Bullet: secondBody.node as! SKSpriteNode, points: 1)
                 }else{
                     collisionWithBullet((secondBody.node as! EnemyClass), Bullet: firstBody.node as! SKSpriteNode, points: 1)
                 }
@@ -245,15 +245,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }else if ((firstBody.categoryBitMask == PhysicsCatagory.Enemy1) && (secondBody.categoryBitMask == PhysicsCatagory.Blast)) || ((firstBody.categoryBitMask == PhysicsCatagory.Blast) && (secondBody.categoryBitMask == PhysicsCatagory.Enemy1)){
                 if firstBody.categoryBitMask == PhysicsCatagory.Enemy1{
-                    collisionWithBlast(firstBody.node as! SKSpriteNode, points: 1)
+                    collisionWithBlast(firstBody.node as! EnemyClass, points: 1)
                 }else{
-                    collisionWithBlast(secondBody.node as! SKSpriteNode, points: 1)
+                    collisionWithBlast(secondBody.node as! EnemyClass, points: 1)
                 }
             }else if ((firstBody.categoryBitMask == PhysicsCatagory.Enemy2) && (secondBody.categoryBitMask == PhysicsCatagory.Blast)) || ((firstBody.categoryBitMask == PhysicsCatagory.Blast) && (secondBody.categoryBitMask == PhysicsCatagory.Enemy2)){
                 if firstBody.categoryBitMask == PhysicsCatagory.Enemy2{
-                    collisionWithBlast(firstBody.node as! SKSpriteNode, points: 5)
+                    collisionWithBlast(firstBody.node as! EnemyClass, points: 5)
                 }else{
-                    collisionWithBlast(secondBody.node as! SKSpriteNode, points: 5)
+                    collisionWithBlast(secondBody.node as! EnemyClass, points: 5)
                 }
             }else if ((firstBody.categoryBitMask == PhysicsCatagory.PowerUpLazor) && (secondBody.categoryBitMask == PhysicsCatagory.Player)) || ((firstBody.categoryBitMask == PhysicsCatagory.Player) && (secondBody.categoryBitMask == PhysicsCatagory.PowerUpLazor)){
                 if firstBody.categoryBitMask == PhysicsCatagory.PowerUpLazor{
@@ -315,13 +315,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func collisionWithLazor(Enemy: EnemyClass, points: Int){
-        Enemy.removeFromParent()
+        Enemy.decreaseHealth(99)
         Score += points
         ScoreLabel.text = "Score: \(Score)"
     }
     
-    func collisionWithBlast(Enemy: SKSpriteNode, points: Int){
-        Enemy.removeFromParent()
+    func collisionWithBlast(Enemy: EnemyClass, points: Int){
+        Enemy.decreaseHealth(99)
         Score += points
         ScoreLabel.text = "Score: \(Score)"
     }

@@ -20,6 +20,7 @@
 		B1A42AB61D0F6C8B00079727 /* back_beam_rear.png in Resources */ = {isa = PBXBuildFile; fileRef = B1A42AB41D0F6C8B00079727 /* back_beam_rear.png */; };
 		B1A42AB81D0F78EF00079727 /* back_beam_rearS.png in Resources */ = {isa = PBXBuildFile; fileRef = B1A42AB71D0F78EF00079727 /* back_beam_rearS.png */; };
 		B1A42ABA1D0F8C7900079727 /* PowerUpBeam.png in Resources */ = {isa = PBXBuildFile; fileRef = B1A42AB91D0F8C7900079727 /* PowerUpBeam.png */; };
+		B1AFA7EB1D176D1B0094A4E4 /* Enemy1_explosion.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B1AFA7EA1D176D1B0094A4E4 /* Enemy1_explosion.atlas */; };
 		B1B7442F1D0A225700675651 /* Lazor_head.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B1B7442E1D0A225700675651 /* Lazor_head.atlas */; };
 		B1B7443D1D0B8EDA00675651 /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B1B7443C1D0B8EDA00675651 /* StartScene.sks */; };
 		B1B7443F1D0B8F0300675651 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B7443E1D0B8F0300675651 /* StartScene.swift */; };
@@ -81,6 +82,7 @@
 		B1A42AB41D0F6C8B00079727 /* back_beam_rear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_beam_rear.png; sourceTree = "<group>"; };
 		B1A42AB71D0F78EF00079727 /* back_beam_rearS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_beam_rearS.png; sourceTree = "<group>"; };
 		B1A42AB91D0F8C7900079727 /* PowerUpBeam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PowerUpBeam.png; sourceTree = "<group>"; };
+		B1AFA7EA1D176D1B0094A4E4 /* Enemy1_explosion.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Enemy1_explosion.atlas; sourceTree = "<group>"; };
 		B1B7442E1D0A225700675651 /* Lazor_head.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Lazor_head.atlas; sourceTree = "<group>"; };
 		B1B7443C1D0B8EDA00675651 /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = StartScene.sks; path = ../StartScene.sks; sourceTree = "<group>"; };
 		B1B7443E1D0B8F0300675651 /* StartScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StartScene.swift; path = ../StartScene.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				B1EDA4F01D05B78A00F4D940 /* GameViewController.swift */,
 				B1EDA4F21D05B78A00F4D940 /* Main.storyboard */,
 				B1F7923E1D15BD2900DB9752 /* gameSounds */,
+				B1AFA7EA1D176D1B0094A4E4 /* Enemy1_explosion.atlas */,
 				B1D085821D14E20B00F0305B /* back_beam_rear_right.atlas */,
 				B1D085831D14E20B00F0305B /* back_beam_rear_left.atlas */,
 				B1D0857E1D14DCDB00F0305B /* back_beam_front_left.atlas */,
@@ -351,6 +354,7 @@
 				B1D085811D14DCDB00F0305B /* back_beam_front_right.atlas in Resources */,
 				B1A42AB81D0F78EF00079727 /* back_beam_rearS.png in Resources */,
 				B1A42AB51D0F6C8B00079727 /* back_beam_front.png in Resources */,
+				B1AFA7EB1D176D1B0094A4E4 /* Enemy1_explosion.atlas in Resources */,
 				B17F47D31D0E37770035B77A /* WUp.png in Resources */,
 				B11436271D0883030078425D /* BlastBullet.png in Resources */,
 				B1EDA4ED1D05B78A00F4D940 /* GameScene.sks in Resources */,
