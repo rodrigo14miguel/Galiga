@@ -11,7 +11,7 @@ import AVFoundation
 
 class StartScene: SKScene {
     var rotation:Float = 0
-    var Player = SKSpriteNode(imageNamed: "9-inc.png")
+    var Player = SKSpriteNode(imageNamed: "9-inc2.png")
     var audioPlayer: AVAudioPlayer!
 
     
@@ -36,7 +36,7 @@ class StartScene: SKScene {
         
         _ = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: #selector(StartScene.rotatePlayer), userInfo: nil, repeats: true)
         Player.position = CGPointMake(self.size.width/2, self.size.height/3)
-        Player.setScale(0.4)
+//        Player.setScale(0.4)
         
         
         

@@ -41,10 +41,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //    var lazor_on_once = false
     var ScoreLabel = UILabel()
     var HighScore = Int()
-    var beamTimer = 75
+    var beamTimer = 25
     var lazorTimer = 50
-    var blastTimer = 45
-    var count = 45
+    var blastTimer = 4
     var Timer: NSTimer!
     var TextureArray_LazorHead = [SKTexture]()
     var TextureArray_LazorBeam = [SKTexture]()
@@ -60,25 +59,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        let path = NSBundle.mainBundle().pathForResource("gameSounds/Bauchamp_jucky.mp3", ofType:nil)!
-        let url = NSURL(fileURLWithPath: path)
         
-        do {
-            let sound = try AVAudioPlayer(contentsOfURL: url)
-            audioPlayer = sound
-            sound.volume = 0.65
-            let seconds = 1.0//Time To Delay
-            let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
-            let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-            
-            dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-                sound.play()
-            })
-            sound.numberOfLoops = -1
-        } catch {
-            // couldn't load file :(
-        }
-
+        
+        _ = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(GameScene.PlayMusic), userInfo: nil, repeats: false)
+        
+        
         
         
         
@@ -118,13 +103,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(SKEmitterNode(fileNamed: "MagicParticle")!)
         
         Player.position = CGPointMake(self.size.width/2, self.size.height/6)
-        Player.setScale(0.125)
+//        Player.setScale(0.125)
         Jet.position = CGPointMake(self.size.width/2, self.size.height/6)
         JetR.position = CGPointMake(self.size.width + 100, self.size.height + 100)
         JetL.position = CGPointMake(self.size.width + 100, self.size.height + 100)
-        Jet.setScale(0.125)
-        JetR.setScale(0.125)
-        JetL.setScale(0.125)
+//        Jet.setScale(0.125)
+//        JetR.setScale(0.125)
+//        JetL.setScale(0.125)
         Jet.position.y = Jet.position.y-10
         JetR.position.y = JetR.position.y-10
         JetL.position.y = JetL.position.y-10
@@ -153,8 +138,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         Jet.zPosition = 1
-        JetR.zPosition = 1
-        JetR.zPosition = 1
+        JetR.zPosition = -2
+        JetR.zPosition = -2
         
         
         Lazor_head.setScale(0.5)
@@ -167,7 +152,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //        Lazor_head.physicsBody?.contactTestBitMask = PhysicsCatagory.Enemy2
         Lazor_head.physicsBody?.affectedByGravity = false
         Lazor_head.physicsBody?.dynamic = false
-        self.addChild(Lazor_head)
+        
         //        Lazor_beam.setScale(2.0)
         Lazor_beam.zPosition = 1
         Lazor_beam.position = CGPointMake(self.size.width + 100, self.size.height+2000)
@@ -178,7 +163,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //        Lazor_beam.physicsBody?.contactTestBitMask = PhysicsCatagory.Enemy2
         Lazor_beam.physicsBody?.affectedByGravity = false
         Lazor_beam.physicsBody?.dynamic = false
-        self.addChild(Lazor_beam)
+        
         
         
         
@@ -327,19 +312,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func collisionWithPowerUpLazor(PowerUp: SKSpriteNode, points: Int){
-        Lazor_head.runAction(SKAction.animateWithTextures(TextureArray_LazorHead, timePerFrame: 0.05))
-        Lazor_beam.runAction(SKAction.animateWithTextures(TextureArray_LazorBeam, timePerFrame: 0.05))
         PowerUp.removeFromParent()
         Score += points
         ScoreLabel.text="Score: \(Score)"
-        gun_mode = 22
+        if gun_mode == base_gun_mode{
+            gun_mode = 22
+        }
         
     }
     func collisionWithPowerUpBlast(PowerUp: SKSpriteNode, points: Int){
         PowerUp.removeFromParent()
         Score += points
         ScoreLabel.text="Score: \(Score)"
-        gun_mode = 21
+        if gun_mode == base_gun_mode{
+            gun_mode = 21
+        }
         
         
     }
@@ -348,7 +335,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         PowerUp.removeFromParent()
         Score += points
         ScoreLabel.text="Score: \(Score)"
-        gun_mode = 23
+        if gun_mode == base_gun_mode{
+            gun_mode = 23
+        }
     }
     
     func collisionWithWUp(WUp: SKSpriteNode, points: Int){
@@ -405,26 +394,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func updadeCounterLazor(){
         if lazorTimer > 0 && gun_mode == 22{
-            lazorTimer -= 1
+            if Timer == nil {
+                Timer = NSTimer.scheduledTimerWithTimeInterval(0.06, target: self, selector: #selector(GameScene.ShowLazor), userInfo: nil, repeats: true)
+            }
         }else if blastTimer > 0 && gun_mode == 21{
-            blastTimer -= 1
-            if blastTimer == (count - 1){
+            
+            if Timer == nil {
                 Timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(GameScene.ShowBlast), userInfo: nil, repeats: true)
             }
         }else if beamTimer > 0 && gun_mode == 23{
-            if beamTimer == 75 {
+            if Timer == nil{
                 Timer = NSTimer.scheduledTimerWithTimeInterval(0.125, target: self, selector: #selector(GameScene.ShowBeam), userInfo: nil, repeats: true)
             }
-            beamTimer -= 1
         }else{
             gun_mode = base_gun_mode
             if Timer != nil{
                 Timer.invalidate()
+                Timer = nil
             }
-            beamTimer = 75
+            beamTimer = 25
             lazorTimer = 50
-            blastTimer = 45
-            count = 45
+            blastTimer = 4
         }
         
         
@@ -439,9 +429,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func SpawnEnemy1(){
         let Enemy = EnemyClass(imageNamed: "Enemy1.png")
         Enemy.health = 1
-        Enemy.setScale(0.1)
+//        Enemy.setScale(0.1)
         let MinValue = self.size.width / 3.2
         let MaxValue = 2.2*self.size.width / 3.2
+        
+//        Enemy.position = CGPoint(x: self.size.width/2, y: self.size.height)
+//        var path = UIBezierPath()
+//        path.moveToPoint(CGPoint(x: MinValue, y: self.size.height/2))
+////        path.addLineToPoint(CGPoint(x: MinValue, y: self.size.height/2))
+//        path.addArcWithCenter(CGPoint(x: self.size.width/2, y: self.size.height/2), radius: (MaxValue-MinValue)/2, startAngle: 0, endAngle: 270, clockwise: true)
+////        path.addLineToPoint(CGPoint(x: MaxValue, y: self.size.height/2))
+//        path.moveToPoint(CGPoint(x: self.size.width/2, y: self.size.height))
+//        
+//       
+//        let shapeTrack = SKShapeNode(path: path.CGPath, centered: true)
+//        shapeTrack.position = CGPoint(x: self.size.width/2, y: self.size.height)
+//        shapeTrack.strokeColor = UIColor.whiteColor()
+//        self.addChild(shapeTrack)
+//        
+//        
+//        let followPath = SKAction.followPath(path.CGPath, asOffset: false, orientToPath: true, speed: 200.0)
+////        let repeatForever = SKAction.repeatActionForever(followPath)
+//        
+//        //Move the circle
+//        Enemy.runAction(followPath)
+
         let SpawnPoint = UInt32(MaxValue - MinValue)
         Enemy.position = CGPoint(x: CGFloat(arc4random_uniform(SpawnPoint) + UInt32(self.size.width/3.2)), y: self.size.height)
         
@@ -464,7 +476,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func SpawnEnemy2(){
         let Enemy = EnemyClass(imageNamed: "Enemy2.png")
         Enemy.health = 10
-        Enemy.setScale(0.2)
+//        Enemy.setScale(0.2)
         let MinValue = self.size.width / 3.2
         let MaxValue = 2.2*self.size.width / 3.2
         let SpawnPoint = UInt32(MaxValue - MinValue)
@@ -489,7 +501,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func ShowWUp(){
         let PowerUp = SKSpriteNode(imageNamed: "WUp.png")
-        PowerUp.setScale(0.15)
+//        PowerUp.setScale(0.15)
         let MinValue = self.size.width / 3.2
         let MaxValue = 2.2*self.size.width / 3.2
         let SpawnPoint = UInt32(MaxValue - MinValue)
@@ -511,71 +523,71 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     func ShowPowerUp(){
-                let Power = Int(arc4random_uniform(3))
-                if Power == 0 {
-                    let PowerUp = SKSpriteNode(imageNamed: "PowerUpLazor.png")
-                    PowerUp.setScale(0.15)
-                    let MinValue = self.size.width / 3.2
-                    let MaxValue = 2.2*self.size.width / 3.2
-                    let SpawnPoint = UInt32(MaxValue - MinValue)
-                    PowerUp.position = CGPoint(x: CGFloat(arc4random_uniform(SpawnPoint) + UInt32(self.size.width/3.2)), y: self.size.height)
-        
-                    let action = SKAction.moveToY(-70, duration: 4.0)
-                    let actionDone = SKAction.removeFromParent()
-                    PowerUp.runAction(SKAction.sequence([action, actionDone]))
-                    PowerUp.zPosition=2
-        
-                    PowerUp.physicsBody = SKPhysicsBody(rectangleOfSize: PowerUp.size)
-                    PowerUp.physicsBody?.categoryBitMask = PhysicsCatagory.PowerUpLazor
-                    PowerUp.physicsBody?.collisionBitMask = 0
-                    PowerUp.physicsBody?.contactTestBitMask = PhysicsCatagory.Player
-                    PowerUp.physicsBody?.affectedByGravity = false
-                    PowerUp.physicsBody?.dynamic = true
-        
-                    self.addChild(PowerUp)
-                }else if Power == 1{
-                    let PowerUp = SKSpriteNode(imageNamed: "PowerUpBlast.png")
-                    PowerUp.setScale(0.15)
-                    let MinValue = self.size.width / 3.2
-                    let MaxValue = 2.2*self.size.width / 3.2
-                    let SpawnPoint = UInt32(MaxValue - MinValue)
-                    PowerUp.position = CGPoint(x: CGFloat(arc4random_uniform(SpawnPoint) + UInt32(self.size.width/3.2)), y: self.size.height)
-        
-                    let action = SKAction.moveToY(-70, duration: 4.0)
-                    let actionDone = SKAction.removeFromParent()
-                    PowerUp.runAction(SKAction.sequence([action, actionDone]))
-                    PowerUp.zPosition=2
-        
-                    PowerUp.physicsBody = SKPhysicsBody(rectangleOfSize: PowerUp.size)
-                    PowerUp.physicsBody?.categoryBitMask = PhysicsCatagory.PowerUpBlast
-                    PowerUp.physicsBody?.collisionBitMask = 0
-                    PowerUp.physicsBody?.contactTestBitMask = PhysicsCatagory.Player
-                    PowerUp.physicsBody?.affectedByGravity = false
-                    PowerUp.physicsBody?.dynamic = true
-        
-                    self.addChild(PowerUp)
-                }else if Power == 2{
-        let PowerUp = SKSpriteNode(imageNamed: "PowerUpBeam.png")
-        PowerUp.setScale(0.15)
-        let MinValue = self.size.width / 3.2
-        let MaxValue = 2.2*self.size.width / 3.2
-        let SpawnPoint = UInt32(MaxValue - MinValue)
-        PowerUp.position = CGPoint(x: CGFloat(arc4random_uniform(SpawnPoint) + UInt32(self.size.width/3.2)), y: self.size.height)
-        
-        let action = SKAction.moveToY(-70, duration: 4.0)
-        let actionDone = SKAction.removeFromParent()
-        PowerUp.runAction(SKAction.sequence([action, actionDone]))
-        PowerUp.zPosition=2
-        
-        PowerUp.physicsBody = SKPhysicsBody(rectangleOfSize: PowerUp.size)
-        PowerUp.physicsBody?.categoryBitMask = PhysicsCatagory.PowerUpBeam
-        PowerUp.physicsBody?.collisionBitMask = 0
-        PowerUp.physicsBody?.contactTestBitMask = PhysicsCatagory.Player
-        PowerUp.physicsBody?.affectedByGravity = false
-        PowerUp.physicsBody?.dynamic = true
-        
-        self.addChild(PowerUp)
-                }
+        let Power = Int(arc4random_uniform(3))
+        if Power == 0 {
+            let PowerUp = SKSpriteNode(imageNamed: "PowerUpLazor.png")
+//            PowerUp.setScale(0.15)
+            let MinValue = self.size.width / 3.2
+            let MaxValue = 2.2*self.size.width / 3.2
+            let SpawnPoint = UInt32(MaxValue - MinValue)
+            PowerUp.position = CGPoint(x: CGFloat(arc4random_uniform(SpawnPoint) + UInt32(self.size.width/3.2)), y: self.size.height)
+            
+            let action = SKAction.moveToY(-70, duration: 4.0)
+            let actionDone = SKAction.removeFromParent()
+            PowerUp.runAction(SKAction.sequence([action, actionDone]))
+            PowerUp.zPosition=2
+            
+            PowerUp.physicsBody = SKPhysicsBody(rectangleOfSize: PowerUp.size)
+            PowerUp.physicsBody?.categoryBitMask = PhysicsCatagory.PowerUpLazor
+            PowerUp.physicsBody?.collisionBitMask = 0
+            PowerUp.physicsBody?.contactTestBitMask = PhysicsCatagory.Player
+            PowerUp.physicsBody?.affectedByGravity = false
+            PowerUp.physicsBody?.dynamic = true
+            
+            self.addChild(PowerUp)
+        }else if Power == 1{
+            let PowerUp = SKSpriteNode(imageNamed: "PowerUpBlast.png")
+//            PowerUp.setScale(0.15)
+            let MinValue = self.size.width / 3.2
+            let MaxValue = 2.2*self.size.width / 3.2
+            let SpawnPoint = UInt32(MaxValue - MinValue)
+            PowerUp.position = CGPoint(x: CGFloat(arc4random_uniform(SpawnPoint) + UInt32(self.size.width/3.2)), y: self.size.height)
+            
+            let action = SKAction.moveToY(-70, duration: 4.0)
+            let actionDone = SKAction.removeFromParent()
+            PowerUp.runAction(SKAction.sequence([action, actionDone]))
+            PowerUp.zPosition=2
+            
+            PowerUp.physicsBody = SKPhysicsBody(rectangleOfSize: PowerUp.size)
+            PowerUp.physicsBody?.categoryBitMask = PhysicsCatagory.PowerUpBlast
+            PowerUp.physicsBody?.collisionBitMask = 0
+            PowerUp.physicsBody?.contactTestBitMask = PhysicsCatagory.Player
+            PowerUp.physicsBody?.affectedByGravity = false
+            PowerUp.physicsBody?.dynamic = true
+            
+            self.addChild(PowerUp)
+        }else if Power == 2{
+            let PowerUp = SKSpriteNode(imageNamed: "PowerUpBeam.png")
+//            PowerUp.setScale(0.15)
+            let MinValue = self.size.width / 3.2
+            let MaxValue = 2.2*self.size.width / 3.2
+            let SpawnPoint = UInt32(MaxValue - MinValue)
+            PowerUp.position = CGPoint(x: CGFloat(arc4random_uniform(SpawnPoint) + UInt32(self.size.width/3.2)), y: self.size.height)
+            
+            let action = SKAction.moveToY(-70, duration: 4.0)
+            let actionDone = SKAction.removeFromParent()
+            PowerUp.runAction(SKAction.sequence([action, actionDone]))
+            PowerUp.zPosition=2
+            
+            PowerUp.physicsBody = SKPhysicsBody(rectangleOfSize: PowerUp.size)
+            PowerUp.physicsBody?.categoryBitMask = PhysicsCatagory.PowerUpBeam
+            PowerUp.physicsBody?.collisionBitMask = 0
+            PowerUp.physicsBody?.contactTestBitMask = PhysicsCatagory.Player
+            PowerUp.physicsBody?.affectedByGravity = false
+            PowerUp.physicsBody?.dynamic = true
+            
+            self.addChild(PowerUp)
+        }
         
     }
     
@@ -584,7 +596,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if gun_mode == 1 {
             let Bullet = SKSpriteNode(imageNamed: "bullet.png")
-            Bullet.setScale(0.5)
+//            Bullet.setScale(0.5)
             Bullet.zPosition = -5
             Bullet.position = CGPointMake(Player.position.x, Player.position.y+40)
             
@@ -604,11 +616,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }else if gun_mode == 2{
             let BulletR = SKSpriteNode(imageNamed: "bullet.png")
-            BulletR.setScale(0.5)
+//            BulletR.setScale(0.5)
             BulletR.zPosition = -5
             BulletR.position = CGPointMake(Player.position.x + 5, Player.position.y+40)
             let BulletL = SKSpriteNode(imageNamed: "bullet.png")
-            BulletL.setScale(0.5)
+//            BulletL.setScale(0.5)
             BulletL.zPosition = -5
             BulletL.position = CGPointMake(Player.position.x - 5, Player.position.y+40)
             
@@ -636,11 +648,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         }else if gun_mode == 3{
             let BulletR = SKSpriteNode(imageNamed: "bullet.png")
-            BulletR.setScale(0.5)
+//            BulletR.setScale(0.5)
             BulletR.zPosition = -5
             BulletR.position = CGPointMake(Player.position.x + 5, Player.position.y+40)
             let BulletL = SKSpriteNode(imageNamed: "bullet.png")
-            BulletL.setScale(0.5)
+//            BulletL.setScale(0.5)
             BulletL.zPosition = -5
             BulletL.position = CGPointMake(Player.position.x - 5, Player.position.y+40)
             
@@ -663,12 +675,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             BulletL.physicsBody?.dynamic = false
             
             let BulletRS = SKSpriteNode(imageNamed: "bullet.png")
-            BulletRS.setScale(0.5)
+//            BulletRS.setScale(0.5)
             BulletRS.zRotation = -0.7853981634
             BulletRS.zPosition = -5
             BulletRS.position = CGPointMake(Player.position.x + 5, Player.position.y+35)
             let BulletLS = SKSpriteNode(imageNamed: "bullet.png")
-            BulletLS.setScale(0.5)
+//            BulletLS.setScale(0.5)
             BulletLS.zRotation = 0.7853981634
             BulletLS.zPosition = -5
             BulletLS.position = CGPointMake(Player.position.x - 5, Player.position.y+35)
@@ -714,6 +726,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func ShowBlast(){
         if gun_mode == 21 {
+            blastTimer -= 1
             let Blaster = SKSpriteNode(imageNamed: "BlastBullet.png")
             let Blast = SKSpriteNode(imageNamed: "Lazor_ring.png")
             let Blast2 = SKSpriteNode(imageNamed: "Lazor_ring.png")
@@ -727,7 +740,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             Blast3.setScale(0.05)
             Blast3.zPosition = 2
             Blast3.position = CGPointMake(Player.position.x, Player.position.y + 60)
-            Blaster.setScale(0.5)
+//            Blaster.setScale(0.5)
             Blaster.zPosition = -5
             Blaster.position = CGPointMake(Player.position.x, Player.position.y + 40)
             
@@ -776,7 +789,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func ShowBeam(){
         if gun_mode == 23{
-            
+            beamTimer -= 1
             
             if beam_number == 1{
                 drawBeam(-2.8797932658, iden: 1)
@@ -797,6 +810,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func ShowLazor(){
+        if lazorTimer == 50{
+            Lazor_head.runAction(SKAction.animateWithTextures(TextureArray_LazorHead, timePerFrame: 0.06))
+            Lazor_beam.runAction(SKAction.animateWithTextures(TextureArray_LazorBeam, timePerFrame: 0.06))
+            self.addChild(Lazor_head)
+            self.addChild(Lazor_beam)
+        }else if lazorTimer<=1{
+            Lazor_head.removeFromParent()
+            Lazor_beam.removeFromParent()
+        }
+        lazorTimer -= 1
+        
+    }
+    
     func drawBeam(angle: Float, iden:Int){
         
         var TextureArray_BeamFront = [SKTexture]()
@@ -810,9 +837,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let BeamBack = SKSpriteNode(imageNamed: "back_beam_rear_right1.png")
         let BeamFront = SKSpriteNode(imageNamed: "back_beam_front_right1.png")
-        BeamBack.setScale(0.4)
+//        BeamBack.setScale(0.4)
         BeamBack.zPosition = 4
-        BeamFront.setScale(0.4)
+//        BeamFront.setScale(0.4)
         BeamFront.zPosition = 5
         
         
@@ -927,6 +954,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func PlayMusic(){
+        let path = NSBundle.mainBundle().pathForResource("gameSounds/Bauchamp_jucky.mp3", ofType:nil)!
+        let url = NSURL(fileURLWithPath: path)
+        
+        do {
+            let sound = try AVAudioPlayer(contentsOfURL: url)
+            audioPlayer = sound
+            sound.volume = 0.65
+            sound.play()
+            sound.numberOfLoops = -1
+        } catch {
+            // couldn't load file :(
+        }
+        
+    }
     
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
@@ -947,21 +989,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //            lazorTimer = 5
         //        }
         
-        if gun_mode == 22 {
-            
-            Lazor_head.position.x = Player.position.x
-            Lazor_head.position.y = Player.position.y + 80
-            Lazor_beam.position.x = Player.position.x
-            Lazor_beam.position.y = Player.position.y + 626
-        }else{
-            Lazor_head.position.x = self.size.width + 100
-            Lazor_head.position.y = self.size.height+2000
-            Lazor_beam.position.x = self.size.width + 100
-            Lazor_beam.position.y = self.size.height+2000
-            //            Lazor_head.position = CGPointMake(self.size.width + 100, self.size.height+2000)
-            //            Lazor_beam.position = CGPointMake(self.size.width + 100, self.size.height+2000)
-        }
+                if gun_mode == 22 {
         
+                    Lazor_head.position.x = Player.position.x
+                    Lazor_head.position.y = Player.position.y + 80
+                    Lazor_beam.position.x = Player.position.x
+                    Lazor_beam.position.y = Player.position.y + 626
+                }
+//                else{
+        //            Lazor_head.position.x = self.size.width + 100
+        //            Lazor_head.position.y = self.size.height+2000
+        //            Lazor_beam.position.x = self.size.width + 100
+        //            Lazor_beam.position.y = self.size.height+2000
+        //            //            Lazor_head.position = CGPointMake(self.size.width + 100, self.size.height+2000)
+        //            //            Lazor_beam.position = CGPointMake(self.size.width + 100, self.size.height+2000)
+        //        }
+        //
         
         if location.y - Jet.position.y >= 0{
             //            let tempora: CGPoint = Jet.position

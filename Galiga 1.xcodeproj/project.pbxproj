@@ -31,6 +31,7 @@
 		B1D085811D14DCDB00F0305B /* back_beam_front_right.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B1D0857F1D14DCDB00F0305B /* back_beam_front_right.atlas */; };
 		B1D085841D14E20B00F0305B /* back_beam_rear_right.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B1D085821D14E20B00F0305B /* back_beam_rear_right.atlas */; };
 		B1D085851D14E20B00F0305B /* back_beam_rear_left.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B1D085831D14E20B00F0305B /* back_beam_rear_left.atlas */; };
+		B1D82F361D2363C900D0FC59 /* 9-inc2.png in Resources */ = {isa = PBXBuildFile; fileRef = B1D82F351D2363C900D0FC59 /* 9-inc2.png */; };
 		B1DB4B911D0610E800C917CB /* 9-inc jetL.png in Resources */ = {isa = PBXBuildFile; fileRef = B1DB4B8E1D0610E800C917CB /* 9-inc jetL.png */; };
 		B1DB4B921D0610E800C917CB /* 9-inc jetR.png in Resources */ = {isa = PBXBuildFile; fileRef = B1DB4B8F1D0610E800C917CB /* 9-inc jetR.png */; };
 		B1DB4B931D0610E800C917CB /* 9-inc jet4.png in Resources */ = {isa = PBXBuildFile; fileRef = B1DB4B901D0610E800C917CB /* 9-inc jet4.png */; };
@@ -94,6 +95,7 @@
 		B1D0857F1D14DCDB00F0305B /* back_beam_front_right.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = back_beam_front_right.atlas; sourceTree = "<group>"; };
 		B1D085821D14E20B00F0305B /* back_beam_rear_right.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = back_beam_rear_right.atlas; sourceTree = "<group>"; };
 		B1D085831D14E20B00F0305B /* back_beam_rear_left.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = back_beam_rear_left.atlas; sourceTree = "<group>"; };
+		B1D82F351D2363C900D0FC59 /* 9-inc2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "9-inc2.png"; sourceTree = "<group>"; };
 		B1DB4B8E1D0610E800C917CB /* 9-inc jetL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "9-inc jetL.png"; sourceTree = "<group>"; };
 		B1DB4B8F1D0610E800C917CB /* 9-inc jetR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "9-inc jetR.png"; sourceTree = "<group>"; };
 		B1DB4B901D0610E800C917CB /* 9-inc jet4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "9-inc jet4.png"; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 		B1EDA51C1D05BC8000F4D940 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				B1D82F351D2363C900D0FC59 /* 9-inc2.png */,
 				B17F47D21D0E37770035B77A /* WUp.png */,
 				B1A42AB91D0F8C7900079727 /* PowerUpBeam.png */,
 				B1A42AB71D0F78EF00079727 /* back_beam_rearS.png */,
@@ -309,6 +312,7 @@
 				TargetAttributes = {
 					B1EDA4E61D05B78A00F4D940 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = UX249L5LB5;
 					};
 					B1EDA4FE1D05B78B00F4D940 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -376,6 +380,7 @@
 				B1B7442F1D0A225700675651 /* Lazor_head.atlas in Resources */,
 				B1A42AB61D0F6C8B00079727 /* back_beam_rear.png in Resources */,
 				B17639791D075524006F293A /* Lazor_beam.png in Resources */,
+				B1D82F361D2363C900D0FC59 /* 9-inc2.png in Resources */,
 				B1B7443D1D0B8EDA00675651 /* StartScene.sks in Resources */,
 				B1A42ABA1D0F8C7900079727 /* PowerUpBeam.png in Resources */,
 				B134C7C01D071D4400BEA15C /* MagicParticle.sks in Resources */,
@@ -551,10 +556,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Galiga 1/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "rf.Galiga-1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -562,10 +570,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Galiga 1/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "rf.Galiga-1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
