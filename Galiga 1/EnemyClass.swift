@@ -89,6 +89,7 @@ class EnemyClass: SKSpriteNode {
 //                enemy_explosion.setScale(0.1)
                 self.texture = SKTexture(imageNamed: "Enemy1_explosion1.png")
                 self.size = CGSize(width: enemy_explosion.size.width, height: enemy_explosion.size.height)
+                self.alpha = 1
                 self.runAction(SKAction.animateWithTextures(explosion, timePerFrame: 0.037))
                 
                 

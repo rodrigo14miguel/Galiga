@@ -13,6 +13,7 @@ class StartScene: SKScene {
     var rotation:Float = 0
     var Player = SKSpriteNode(imageNamed: "9-inc2.png")
     var audioPlayer: AVAudioPlayer!
+    var Timer = NSTimer()
 
     
     override func didMoveToView(view: SKView) {
@@ -34,7 +35,7 @@ class StartScene: SKScene {
         }
         
         
-        _ = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: #selector(StartScene.rotatePlayer), userInfo: nil, repeats: true)
+        Timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: #selector(StartScene.rotatePlayer), userInfo: nil, repeats: true)
         Player.position = CGPointMake(self.size.width/2, self.size.height/3)
 //        Player.setScale(0.4)
         
@@ -45,22 +46,42 @@ class StartScene: SKScene {
     }
     
     func rotatePlayer(){
-        rotation -= 0.006283185307
-        Player.removeFromParent()
+        if Player.zRotation == CGFloat(M_PI){
+            Player.zRotation = 0
+        }
+        rotation -= Float(M_PI)/500
+//        Player.removeFromParent()
         Player.zRotation = CGFloat(rotation)
-        self.addChild(Player)
+//        self.addChild(Player)
     }
+    func destroyScene(){
+        let gameSceneTemp = GameScene(fileNamed: "GameScene")
+        gameSceneTemp!.scaleMode = .AspectFill
+        self.scene!.view?.presentScene(gameSceneTemp!, transition: SKTransition.fadeWithDuration(1.5))
+        Timer.invalidate()
+        Player.alpha=1
+    }
+    
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         /* Called when a touch begins */
-        let gameSceneTemp = GameScene(fileNamed: "GameScene")
-        gameSceneTemp!.scaleMode = .AspectFill
+        
         if audioPlayer != nil {
             audioPlayer.stop()
             audioPlayer = nil
         }
         
-        self.scene!.view?.presentScene(gameSceneTemp!, transition: SKTransition.fadeWithDuration(1.5))
+        Timer.invalidate()
+        var action = Array<SKAction>()
+        action.append(SKAction.rotateToAngle(round(Player.zRotation/CGFloat(2*M_PI))*CGFloat(2*M_PI), duration: 1.0))
+//        NSLog("\(round(Player.zRotation/CGFloat(2*M_PI))), \(round(Player.zRotation/CGFloat(2*M_PI))*CGFloat(2*M_PI)), \(Player.zRotation), \(2*M_PI)")
+        action.append(SKAction.moveTo(CGPointMake(self.size.width/2, self.size.height/6), duration: 1.0))
+        action.append(SKAction.scaleTo(0.283, duration: 1.0))
+        let group = SKAction.group(action)
+        Player.runAction(group)
+        
+        Timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(StartScene.destroyScene), userInfo: nil, repeats: true)
+        
         
         
         

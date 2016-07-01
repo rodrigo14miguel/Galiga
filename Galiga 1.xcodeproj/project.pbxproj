@@ -15,6 +15,7 @@
 		B17639791D075524006F293A /* Lazor_beam.png in Resources */ = {isa = PBXBuildFile; fileRef = B17639781D075524006F293A /* Lazor_beam.png */; };
 		B176397B1D0758BB006F293A /* PowerUpLazor.png in Resources */ = {isa = PBXBuildFile; fileRef = B176397A1D0758BB006F293A /* PowerUpLazor.png */; };
 		B17F47D31D0E37770035B77A /* WUp.png in Resources */ = {isa = PBXBuildFile; fileRef = B17F47D21D0E37770035B77A /* WUp.png */; };
+		B17FBBB81D249421007895A5 /* Enemy1_reverse.png in Resources */ = {isa = PBXBuildFile; fileRef = B17FBBB71D249421007895A5 /* Enemy1_reverse.png */; };
 		B195AA3A1D08DFA30030B395 /* Lazor_head.png in Resources */ = {isa = PBXBuildFile; fileRef = B195AA391D08DFA30030B395 /* Lazor_head.png */; };
 		B195AA3C1D08DFE70030B395 /* Lazor_ring.png in Resources */ = {isa = PBXBuildFile; fileRef = B195AA3B1D08DFE70030B395 /* Lazor_ring.png */; };
 		B1A42AB51D0F6C8B00079727 /* back_beam_front.png in Resources */ = {isa = PBXBuildFile; fileRef = B1A42AB31D0F6C8B00079727 /* back_beam_front.png */; };
@@ -79,6 +80,7 @@
 		B17639781D075524006F293A /* Lazor_beam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lazor_beam.png; sourceTree = "<group>"; };
 		B176397A1D0758BB006F293A /* PowerUpLazor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PowerUpLazor.png; sourceTree = "<group>"; };
 		B17F47D21D0E37770035B77A /* WUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WUp.png; sourceTree = "<group>"; };
+		B17FBBB71D249421007895A5 /* Enemy1_reverse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Enemy1_reverse.png; sourceTree = "<group>"; };
 		B195AA391D08DFA30030B395 /* Lazor_head.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lazor_head.png; sourceTree = "<group>"; };
 		B195AA3B1D08DFE70030B395 /* Lazor_ring.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lazor_ring.png; sourceTree = "<group>"; };
 		B1A42AB31D0F6C8B00079727 /* back_beam_front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_beam_front.png; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 		B1EDA51C1D05BC8000F4D940 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				B17FBBB71D249421007895A5 /* Enemy1_reverse.png */,
 				B1D82F351D2363C900D0FC59 /* 9-inc2.png */,
 				B17F47D21D0E37770035B77A /* WUp.png */,
 				B1A42AB91D0F8C7900079727 /* PowerUpBeam.png */,
@@ -375,6 +378,7 @@
 				B1EDA4F41D05B78A00F4D940 /* Main.storyboard in Resources */,
 				B1DB4B921D0610E800C917CB /* 9-inc jetR.png in Resources */,
 				B176397B1D0758BB006F293A /* PowerUpLazor.png in Resources */,
+				B17FBBB81D249421007895A5 /* Enemy1_reverse.png in Resources */,
 				B1F7923F1D15BD2900DB9752 /* gameSounds in Resources */,
 				B1DB4B911D0610E800C917CB /* 9-inc jetL.png in Resources */,
 				B1B7442F1D0A225700675651 /* Lazor_head.atlas in Resources */,

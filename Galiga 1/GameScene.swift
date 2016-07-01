@@ -44,6 +44,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var beamTimer = 25
     var lazorTimer = 50
     var blastTimer = 4
+    var enemy1Timer = 25
+    var enemyType = 1
     var Timer: NSTimer!
     var TextureArray_LazorHead = [SKTexture]()
     var TextureArray_LazorBeam = [SKTexture]()
@@ -53,6 +55,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var beam_number = 1
     //    var lazorAnimated = SKSpriteNode()
     var audioPlayer: AVAudioPlayer!
+    var audioBullet: AVAudioPlayer!
+    var audioSpecial: AVAudioPlayer!
+    let PI = CGFloat(M_PI)
     
     
     
@@ -99,17 +104,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         physicsWorld.contactDelegate = self
-        self.backgroundColor = SKColor.darkGrayColor()
+        self.backgroundColor = SKColor.blackColor()
         self.addChild(SKEmitterNode(fileNamed: "MagicParticle")!)
         
         Player.position = CGPointMake(self.size.width/2, self.size.height/6)
-//        Player.setScale(0.125)
+        //        Player.setScale(0.125)
         Jet.position = CGPointMake(self.size.width/2, self.size.height/6)
         JetR.position = CGPointMake(self.size.width + 100, self.size.height + 100)
         JetL.position = CGPointMake(self.size.width + 100, self.size.height + 100)
-//        Jet.setScale(0.125)
-//        JetR.setScale(0.125)
-//        JetL.setScale(0.125)
+        //        Jet.setScale(0.125)
+        //        JetR.setScale(0.125)
+        //        JetL.setScale(0.125)
         Jet.position.y = Jet.position.y-10
         JetR.position.y = JetR.position.y-10
         JetL.position.y = JetL.position.y-10
@@ -119,7 +124,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //        if lazor_on == false{
         //        if gun_mode < 4 {
-        _ = NSTimer.scheduledTimerWithTimeInterval(0.3, target: self, selector: #selector(GameScene.ShowBullet), userInfo: nil, repeats: true)
+        _ = NSTimer.scheduledTimerWithTimeInterval(0.15, target: self, selector: #selector(GameScene.ShowBullet), userInfo: nil, repeats: true)
         //        }else if gun_mode == 4{
         //            _ = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(GameScene.ShowBullet), userInfo: nil, repeats: true)
         //        }else if gun_mode == 5{
@@ -133,7 +138,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         _ = NSTimer.scheduledTimerWithTimeInterval(4.0, target: self, selector: #selector(GameScene.ShowPowerUp), userInfo: nil, repeats: true)
         _ = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: #selector(GameScene.ShowWUp), userInfo: nil, repeats: true)
-        _ = NSTimer.scheduledTimerWithTimeInterval(1.3, target: self, selector: #selector(GameScene.SpawnEnemy1), userInfo: nil, repeats: true)
+        _ = NSTimer.scheduledTimerWithTimeInterval(0.3, target: self, selector: #selector(GameScene.ShowEnemy1), userInfo: nil, repeats: true)
         _ = NSTimer.scheduledTimerWithTimeInterval(8.0, target: self, selector: #selector(GameScene.SpawnEnemy2), userInfo: nil, repeats: true)
         
         
@@ -376,12 +381,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             HighScoreDefault.setValue(Score, forKey: "HighScore")
             HighScoreDefault.synchronize()
         }
-        
+        pressed=false
+        beamTimer = 0
+        lazorTimer = 0
+        blastTimer = 0
         Enemy.removeFromParent()
         Player.removeFromParent()
         if audioPlayer != nil {
+            audioPlayer.pause()
             audioPlayer.stop()
             audioPlayer = nil
+        }
+        if audioBullet != nil {
+            audioBullet.pause()
+            audioBullet.stop()
+            audioBullet = nil
+        }
+        if audioSpecial != nil {
+            audioSpecial.pause()
+            audioSpecial.stop()
+            audioSpecial = nil
         }
         //        self.removeAllChildren()
         self.view?.presentScene(EndScene())
@@ -426,40 +445,69 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //        }
     }
     
-    func SpawnEnemy1(){
-        let Enemy = EnemyClass(imageNamed: "Enemy1.png")
-        Enemy.health = 1
-//        Enemy.setScale(0.1)
+    
+    func ShowEnemy1(){
+        if  enemy1Timer > 1{
+            if enemyType == 2{
+                SpawnEnemy1(1)
+            }else if enemyType == 1 && (enemy1Timer % 6) == 0{
+                SpawnEnemy1(2)
+            }
+            enemy1Timer -= 1
+        }else{
+            let Power = Int(arc4random_uniform(3))
+            if Power == 1{
+                //            SpawnEnemy1(1)
+                enemy1Timer = 25
+                enemyType = 1
+            }else{
+                //            SpawnEnemy1(2)
+                enemy1Timer = 15
+                enemyType = 2
+            }
+            
+        }
+    }
+    
+    func SpawnEnemy1(mode: Int){
+        var Enemy = EnemyClass()
+        
+        //        Enemy.setScale(0.1)
         let MinValue = self.size.width / 3.2
         let MaxValue = 2.2*self.size.width / 3.2
         
-//        Enemy.position = CGPoint(x: self.size.width/2, y: self.size.height)
-//        var path = UIBezierPath()
-//        path.moveToPoint(CGPoint(x: MinValue, y: self.size.height/2))
-////        path.addLineToPoint(CGPoint(x: MinValue, y: self.size.height/2))
-//        path.addArcWithCenter(CGPoint(x: self.size.width/2, y: self.size.height/2), radius: (MaxValue-MinValue)/2, startAngle: 0, endAngle: 270, clockwise: true)
-////        path.addLineToPoint(CGPoint(x: MaxValue, y: self.size.height/2))
-//        path.moveToPoint(CGPoint(x: self.size.width/2, y: self.size.height))
-//        
-//       
-//        let shapeTrack = SKShapeNode(path: path.CGPath, centered: true)
-//        shapeTrack.position = CGPoint(x: self.size.width/2, y: self.size.height)
-//        shapeTrack.strokeColor = UIColor.whiteColor()
-//        self.addChild(shapeTrack)
-//        
-//        
-//        let followPath = SKAction.followPath(path.CGPath, asOffset: false, orientToPath: true, speed: 200.0)
-////        let repeatForever = SKAction.repeatActionForever(followPath)
-//        
-//        //Move the circle
-//        Enemy.runAction(followPath)
-
-        let SpawnPoint = UInt32(MaxValue - MinValue)
-        Enemy.position = CGPoint(x: CGFloat(arc4random_uniform(SpawnPoint) + UInt32(self.size.width/3.2)), y: self.size.height)
-        
-        let action = SKAction.moveToY(-70, duration: 3.0)
-        let actionDone = SKAction.removeFromParent()
-        Enemy.runAction(SKAction.sequence([action, actionDone]))
+        if mode == 1{
+            Enemy = EnemyClass(imageNamed: "Enemy1_reverse.png")
+            Enemy.health = 3
+            Enemy.position = CGPoint(x: self.size.width+100, y: self.size.height)
+            let path = UIBezierPath()
+            path.moveToPoint(CGPoint(x: MinValue, y: self.size.height))
+            //circula 8x
+            path.addArcWithCenter(CGPoint(x: self.size.width/2, y: 2.8*self.size.height/4), radius: 0.9*(MaxValue-MinValue)/2, startAngle: PI/4, endAngle: 3*PI/2, clockwise: false)
+            path.addArcWithCenter(CGPoint(x: self.size.width/2, y: 1*self.size.height/4), radius: 0.9*(MaxValue-MinValue)/2, startAngle: PI/2, endAngle: 0, clockwise: true)
+            path.addArcWithCenter(CGPoint(x: self.size.width/2, y: 1*self.size.height/4), radius: 0.9*(MaxValue-MinValue)/2, startAngle: 0, endAngle: PI/2, clockwise: true)
+            path.addArcWithCenter(CGPoint(x: self.size.width/2, y: 2.8*self.size.height/4), radius: 0.9*(MaxValue-MinValue)/2, startAngle: 3*PI/2, endAngle: 3*PI/4, clockwise: false)
+            //        path.addArcWithCenter(CGPoint(x: self.size.width/2, y: self.size.height/3), radius: (MaxValue-MinValue)/2, startAngle: 0, endAngle: PI/2, clockwise: true)
+            //sai do ecra
+            path.addLineToPoint(CGPoint(x: MaxValue+25, y: self.size.height+25))
+            
+            
+            
+            let followPath = SKAction.followPath(path.CGPath, asOffset: false, orientToPath: true, speed: 400.0)
+            //        let repeatForever = SKAction.repeatActionForever(followPath)
+            
+            //Move the circle
+            Enemy.runAction(followPath)
+        }else{
+            Enemy = EnemyClass(imageNamed: "Enemy1.png")
+            Enemy.health = 3
+            let SpawnPoint = UInt32(MaxValue - MinValue)
+            Enemy.position = CGPoint(x: CGFloat(arc4random_uniform(SpawnPoint) + UInt32(self.size.width/3.2)), y: self.size.height)
+            
+            let action = SKAction.moveToY(-70, duration: 3.0)
+            let actionDone = SKAction.removeFromParent()
+            Enemy.runAction(SKAction.sequence([action, actionDone]))
+        }
         Enemy.zPosition=2
         
         Enemy.physicsBody = SKPhysicsBody(rectangleOfSize: Enemy.size)
@@ -475,8 +523,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func SpawnEnemy2(){
         let Enemy = EnemyClass(imageNamed: "Enemy2.png")
-        Enemy.health = 10
-//        Enemy.setScale(0.2)
+        Enemy.health = 20
+        //        Enemy.setScale(0.2)
         let MinValue = self.size.width / 3.2
         let MaxValue = 2.2*self.size.width / 3.2
         let SpawnPoint = UInt32(MaxValue - MinValue)
@@ -501,13 +549,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func ShowWUp(){
         let PowerUp = SKSpriteNode(imageNamed: "WUp.png")
-//        PowerUp.setScale(0.15)
+        //        PowerUp.setScale(0.15)
         let MinValue = self.size.width / 3.2
         let MaxValue = 2.2*self.size.width / 3.2
         let SpawnPoint = UInt32(MaxValue - MinValue)
         PowerUp.position = CGPoint(x: CGFloat(arc4random_uniform(SpawnPoint) + UInt32(self.size.width/3.2)), y: self.size.height)
         
-        let action = SKAction.moveToY(-70, duration: 4.0)
+        let action = SKAction.moveToY(-70, duration: 8.0)
         let actionDone = SKAction.removeFromParent()
         PowerUp.runAction(SKAction.sequence([action, actionDone]))
         PowerUp.zPosition=2
@@ -526,13 +574,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let Power = Int(arc4random_uniform(3))
         if Power == 0 {
             let PowerUp = SKSpriteNode(imageNamed: "PowerUpLazor.png")
-//            PowerUp.setScale(0.15)
+            //            PowerUp.setScale(0.15)
             let MinValue = self.size.width / 3.2
             let MaxValue = 2.2*self.size.width / 3.2
             let SpawnPoint = UInt32(MaxValue - MinValue)
             PowerUp.position = CGPoint(x: CGFloat(arc4random_uniform(SpawnPoint) + UInt32(self.size.width/3.2)), y: self.size.height)
             
-            let action = SKAction.moveToY(-70, duration: 4.0)
+            let action = SKAction.moveToY(-70, duration: 8.0)
             let actionDone = SKAction.removeFromParent()
             PowerUp.runAction(SKAction.sequence([action, actionDone]))
             PowerUp.zPosition=2
@@ -547,13 +595,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.addChild(PowerUp)
         }else if Power == 1{
             let PowerUp = SKSpriteNode(imageNamed: "PowerUpBlast.png")
-//            PowerUp.setScale(0.15)
+            //            PowerUp.setScale(0.15)
             let MinValue = self.size.width / 3.2
             let MaxValue = 2.2*self.size.width / 3.2
             let SpawnPoint = UInt32(MaxValue - MinValue)
             PowerUp.position = CGPoint(x: CGFloat(arc4random_uniform(SpawnPoint) + UInt32(self.size.width/3.2)), y: self.size.height)
             
-            let action = SKAction.moveToY(-70, duration: 4.0)
+            let action = SKAction.moveToY(-70, duration: 8.0)
             let actionDone = SKAction.removeFromParent()
             PowerUp.runAction(SKAction.sequence([action, actionDone]))
             PowerUp.zPosition=2
@@ -568,13 +616,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.addChild(PowerUp)
         }else if Power == 2{
             let PowerUp = SKSpriteNode(imageNamed: "PowerUpBeam.png")
-//            PowerUp.setScale(0.15)
+            //            PowerUp.setScale(0.15)
             let MinValue = self.size.width / 3.2
             let MaxValue = 2.2*self.size.width / 3.2
             let SpawnPoint = UInt32(MaxValue - MinValue)
             PowerUp.position = CGPoint(x: CGFloat(arc4random_uniform(SpawnPoint) + UInt32(self.size.width/3.2)), y: self.size.height)
             
-            let action = SKAction.moveToY(-70, duration: 4.0)
+            let action = SKAction.moveToY(-70, duration: 8.0)
             let actionDone = SKAction.removeFromParent()
             PowerUp.runAction(SKAction.sequence([action, actionDone]))
             PowerUp.zPosition=2
@@ -594,131 +642,169 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func ShowBullet(){
         
         
-        if gun_mode == 1 {
-            let Bullet = SKSpriteNode(imageNamed: "bullet.png")
-//            Bullet.setScale(0.5)
-            Bullet.zPosition = -5
-            Bullet.position = CGPointMake(Player.position.x, Player.position.y+40)
-            
-            let action = SKAction.moveToY(self.size.height + 300, duration: 0.8)
-            let actionDone = SKAction.removeFromParent()
-            Bullet.runAction(SKAction.sequence([action, actionDone]))
-            
-            Bullet.physicsBody = SKPhysicsBody(rectangleOfSize: Bullet.size)
-            Bullet.physicsBody?.categoryBitMask = PhysicsCatagory.Bullet
-            Bullet.physicsBody?.contactTestBitMask = PhysicsCatagory.Enemy1|PhysicsCatagory.Enemy2
-            Bullet.physicsBody?.collisionBitMask = 0
-            Bullet.physicsBody?.affectedByGravity = false
-            Bullet.physicsBody?.dynamic = false
-            
-            if pressed == true{
+        if pressed == true{
+                if gun_mode == 1 {
+                    let path = NSBundle.mainBundle().pathForResource("gameSounds/bullet.wav", ofType:nil)!
+                    let url = NSURL(fileURLWithPath: path)
+                    
+                    do {
+                        let sound = try AVAudioPlayer(contentsOfURL: url)
+                        audioBullet = sound
+                        sound.volume = 0.45
+                        sound.play()
+                    } catch {
+                        // couldn't load file :(
+                    }
+
+                let Bullet = SKSpriteNode(imageNamed: "bullet.png")
+                //            Bullet.setScale(0.5)
+                Bullet.zPosition = -5
+                Bullet.position = CGPointMake(Player.position.x, Player.position.y+40)
+                
+                let action = SKAction.moveToY(self.size.height + 300, duration: 0.8)
+                let actionDone = SKAction.removeFromParent()
+                Bullet.runAction(SKAction.sequence([action, actionDone]))
+                
+                Bullet.physicsBody = SKPhysicsBody(rectangleOfSize: Bullet.size)
+                Bullet.physicsBody?.categoryBitMask = PhysicsCatagory.Bullet
+                Bullet.physicsBody?.contactTestBitMask = PhysicsCatagory.Enemy1|PhysicsCatagory.Enemy2
+                Bullet.physicsBody?.collisionBitMask = 0
+                Bullet.physicsBody?.affectedByGravity = false
+                Bullet.physicsBody?.dynamic = false
+                
+                
                 self.addChild(Bullet)
-            }
-        }else if gun_mode == 2{
-            let BulletR = SKSpriteNode(imageNamed: "bullet.png")
-//            BulletR.setScale(0.5)
-            BulletR.zPosition = -5
-            BulletR.position = CGPointMake(Player.position.x + 5, Player.position.y+40)
-            let BulletL = SKSpriteNode(imageNamed: "bullet.png")
-//            BulletL.setScale(0.5)
-            BulletL.zPosition = -5
-            BulletL.position = CGPointMake(Player.position.x - 5, Player.position.y+40)
-            
-            let action = SKAction.moveToY(self.size.height + 300, duration: 0.8)
-            let actionDone = SKAction.removeFromParent()
-            BulletR.runAction(SKAction.sequence([action, actionDone]))
-            BulletL.runAction(SKAction.sequence([action, actionDone]))
-            
-            BulletR.physicsBody = SKPhysicsBody(rectangleOfSize: BulletR.size)
-            BulletR.physicsBody?.categoryBitMask = PhysicsCatagory.Bullet
-            BulletR.physicsBody?.contactTestBitMask = PhysicsCatagory.Enemy1|PhysicsCatagory.Enemy2
-            BulletR.physicsBody?.collisionBitMask = 0
-            BulletR.physicsBody?.affectedByGravity = false
-            BulletR.physicsBody?.dynamic = false
-            BulletL.physicsBody = SKPhysicsBody(rectangleOfSize: BulletL.size)
-            BulletL.physicsBody?.categoryBitMask = PhysicsCatagory.Bullet
-            BulletL.physicsBody?.contactTestBitMask = PhysicsCatagory.Enemy1|PhysicsCatagory.Enemy2
-            BulletL.physicsBody?.collisionBitMask = 0
-            BulletL.physicsBody?.affectedByGravity = false
-            BulletL.physicsBody?.dynamic = false
-            if pressed == true{
+                
+            }else if gun_mode == 2{
+                    let path = NSBundle.mainBundle().pathForResource("gameSounds/bullet.wav", ofType:nil)!
+                    let url = NSURL(fileURLWithPath: path)
+                    
+                    do {
+                        let sound = try AVAudioPlayer(contentsOfURL: url)
+                        audioBullet = sound
+                        sound.volume = 0.45
+                        sound.play()
+                    } catch {
+                        // couldn't load file :(
+                    }
+
+                let BulletR = SKSpriteNode(imageNamed: "bullet.png")
+                //            BulletR.setScale(0.5)
+                BulletR.zPosition = -5
+                BulletR.position = CGPointMake(Player.position.x + 5, Player.position.y+40)
+                let BulletL = SKSpriteNode(imageNamed: "bullet.png")
+                //            BulletL.setScale(0.5)
+                BulletL.zPosition = -5
+                BulletL.position = CGPointMake(Player.position.x - 5, Player.position.y+40)
+                
+                let action = SKAction.moveToY(self.size.height + 300, duration: 0.8)
+                let actionDone = SKAction.removeFromParent()
+                BulletR.runAction(SKAction.sequence([action, actionDone]))
+                BulletL.runAction(SKAction.sequence([action, actionDone]))
+                
+                BulletR.physicsBody = SKPhysicsBody(rectangleOfSize: BulletR.size)
+                BulletR.physicsBody?.categoryBitMask = PhysicsCatagory.Bullet
+                BulletR.physicsBody?.contactTestBitMask = PhysicsCatagory.Enemy1|PhysicsCatagory.Enemy2
+                BulletR.physicsBody?.collisionBitMask = 0
+                BulletR.physicsBody?.affectedByGravity = false
+                BulletR.physicsBody?.dynamic = false
+                BulletL.physicsBody = SKPhysicsBody(rectangleOfSize: BulletL.size)
+                BulletL.physicsBody?.categoryBitMask = PhysicsCatagory.Bullet
+                BulletL.physicsBody?.contactTestBitMask = PhysicsCatagory.Enemy1|PhysicsCatagory.Enemy2
+                BulletL.physicsBody?.collisionBitMask = 0
+                BulletL.physicsBody?.affectedByGravity = false
+                BulletL.physicsBody?.dynamic = false
+                
                 self.addChild(BulletR)
                 self.addChild(BulletL)
-            }
-            
-        }else if gun_mode == 3{
-            let BulletR = SKSpriteNode(imageNamed: "bullet.png")
-//            BulletR.setScale(0.5)
-            BulletR.zPosition = -5
-            BulletR.position = CGPointMake(Player.position.x + 5, Player.position.y+40)
-            let BulletL = SKSpriteNode(imageNamed: "bullet.png")
-//            BulletL.setScale(0.5)
-            BulletL.zPosition = -5
-            BulletL.position = CGPointMake(Player.position.x - 5, Player.position.y+40)
-            
-            let action = SKAction.moveToY(self.size.height + 300, duration: 0.8)
-            let actionDone = SKAction.removeFromParent()
-            BulletR.runAction(SKAction.sequence([action, actionDone]))
-            BulletL.runAction(SKAction.sequence([action, actionDone]))
-            
-            BulletR.physicsBody = SKPhysicsBody(rectangleOfSize: BulletR.size)
-            BulletR.physicsBody?.categoryBitMask = PhysicsCatagory.Bullet
-            BulletR.physicsBody?.contactTestBitMask = PhysicsCatagory.Enemy1|PhysicsCatagory.Enemy2
-            BulletR.physicsBody?.collisionBitMask = 0
-            BulletR.physicsBody?.affectedByGravity = false
-            BulletR.physicsBody?.dynamic = false
-            BulletL.physicsBody = SKPhysicsBody(rectangleOfSize: BulletL.size)
-            BulletL.physicsBody?.categoryBitMask = PhysicsCatagory.Bullet
-            BulletL.physicsBody?.contactTestBitMask = PhysicsCatagory.Enemy1|PhysicsCatagory.Enemy2
-            BulletL.physicsBody?.collisionBitMask = 0
-            BulletL.physicsBody?.affectedByGravity = false
-            BulletL.physicsBody?.dynamic = false
-            
-            let BulletRS = SKSpriteNode(imageNamed: "bullet.png")
-//            BulletRS.setScale(0.5)
-            BulletRS.zRotation = -0.7853981634
-            BulletRS.zPosition = -5
-            BulletRS.position = CGPointMake(Player.position.x + 5, Player.position.y+35)
-            let BulletLS = SKSpriteNode(imageNamed: "bullet.png")
-//            BulletLS.setScale(0.5)
-            BulletLS.zRotation = 0.7853981634
-            BulletLS.zPosition = -5
-            BulletLS.position = CGPointMake(Player.position.x - 5, Player.position.y+35)
-            
-            
-            let action1 = SKAction.moveTo(CGPointMake(Player.position.x + 1000, Player.position.y + 1620), duration: 1.2)
-            let action2 = SKAction.moveTo(CGPointMake(Player.position.x - 1000, Player.position.y + 1620), duration: 1.2)
-            //            let actionDone = SKAction.removeFromParent()
-            BulletRS.runAction(SKAction.sequence([action1, actionDone]))
-            BulletLS.runAction(SKAction.sequence([action2, actionDone]))
-            
-            BulletRS.physicsBody = SKPhysicsBody(rectangleOfSize: BulletRS.size)
-            BulletRS.physicsBody?.categoryBitMask = PhysicsCatagory.Bullet
-            BulletRS.physicsBody?.contactTestBitMask = PhysicsCatagory.Enemy1|PhysicsCatagory.Enemy2
-            BulletRS.physicsBody?.collisionBitMask = 0
-            BulletRS.physicsBody?.affectedByGravity = false
-            BulletRS.physicsBody?.dynamic = false
-            BulletLS.physicsBody = SKPhysicsBody(rectangleOfSize: BulletLS.size)
-            BulletLS.physicsBody?.categoryBitMask = PhysicsCatagory.Bullet
-            BulletLS.physicsBody?.contactTestBitMask = PhysicsCatagory.Enemy1|PhysicsCatagory.Enemy2
-            BulletLS.physicsBody?.collisionBitMask = 0
-            BulletLS.physicsBody?.affectedByGravity = false
-            BulletLS.physicsBody?.dynamic = false
-            if pressed == true{
+                
+                
+            }else if gun_mode == 3{
+                    let path = NSBundle.mainBundle().pathForResource("gameSounds/bullet.wav", ofType:nil)!
+                    let url = NSURL(fileURLWithPath: path)
+                    
+                    do {
+                        let sound = try AVAudioPlayer(contentsOfURL: url)
+                        audioBullet = sound
+                        sound.volume = 0.45
+                        sound.play()
+                    } catch {
+                        // couldn't load file :(
+                    }
+
+                let BulletR = SKSpriteNode(imageNamed: "bullet.png")
+                //            BulletR.setScale(0.5)
+                BulletR.zPosition = -5
+                BulletR.position = CGPointMake(Player.position.x + 5, Player.position.y+40)
+                let BulletL = SKSpriteNode(imageNamed: "bullet.png")
+                //            BulletL.setScale(0.5)
+                BulletL.zPosition = -5
+                BulletL.position = CGPointMake(Player.position.x - 5, Player.position.y+40)
+                
+                let action = SKAction.moveToY(self.size.height + 300, duration: 0.8)
+                let actionDone = SKAction.removeFromParent()
+                BulletR.runAction(SKAction.sequence([action, actionDone]))
+                BulletL.runAction(SKAction.sequence([action, actionDone]))
+                
+                BulletR.physicsBody = SKPhysicsBody(rectangleOfSize: BulletR.size)
+                BulletR.physicsBody?.categoryBitMask = PhysicsCatagory.Bullet
+                BulletR.physicsBody?.contactTestBitMask = PhysicsCatagory.Enemy1|PhysicsCatagory.Enemy2
+                BulletR.physicsBody?.collisionBitMask = 0
+                BulletR.physicsBody?.affectedByGravity = false
+                BulletR.physicsBody?.dynamic = false
+                BulletL.physicsBody = SKPhysicsBody(rectangleOfSize: BulletL.size)
+                BulletL.physicsBody?.categoryBitMask = PhysicsCatagory.Bullet
+                BulletL.physicsBody?.contactTestBitMask = PhysicsCatagory.Enemy1|PhysicsCatagory.Enemy2
+                BulletL.physicsBody?.collisionBitMask = 0
+                BulletL.physicsBody?.affectedByGravity = false
+                BulletL.physicsBody?.dynamic = false
+                
+                let BulletRS = SKSpriteNode(imageNamed: "bullet.png")
+                //            BulletRS.setScale(0.5)
+                BulletRS.zRotation = -0.7853981634
+                BulletRS.zPosition = -5
+                BulletRS.position = CGPointMake(Player.position.x + 5, Player.position.y+35)
+                let BulletLS = SKSpriteNode(imageNamed: "bullet.png")
+                //            BulletLS.setScale(0.5)
+                BulletLS.zRotation = 0.7853981634
+                BulletLS.zPosition = -5
+                BulletLS.position = CGPointMake(Player.position.x - 5, Player.position.y+35)
+                
+                
+                let action1 = SKAction.moveTo(CGPointMake(Player.position.x + 1000, Player.position.y + 1620), duration: 1.2)
+                let action2 = SKAction.moveTo(CGPointMake(Player.position.x - 1000, Player.position.y + 1620), duration: 1.2)
+                //            let actionDone = SKAction.removeFromParent()
+                BulletRS.runAction(SKAction.sequence([action1, actionDone]))
+                BulletLS.runAction(SKAction.sequence([action2, actionDone]))
+                
+                BulletRS.physicsBody = SKPhysicsBody(rectangleOfSize: BulletRS.size)
+                BulletRS.physicsBody?.categoryBitMask = PhysicsCatagory.Bullet
+                BulletRS.physicsBody?.contactTestBitMask = PhysicsCatagory.Enemy1|PhysicsCatagory.Enemy2
+                BulletRS.physicsBody?.collisionBitMask = 0
+                BulletRS.physicsBody?.affectedByGravity = false
+                BulletRS.physicsBody?.dynamic = false
+                BulletLS.physicsBody = SKPhysicsBody(rectangleOfSize: BulletLS.size)
+                BulletLS.physicsBody?.categoryBitMask = PhysicsCatagory.Bullet
+                BulletLS.physicsBody?.contactTestBitMask = PhysicsCatagory.Enemy1|PhysicsCatagory.Enemy2
+                BulletLS.physicsBody?.collisionBitMask = 0
+                BulletLS.physicsBody?.affectedByGravity = false
+                BulletLS.physicsBody?.dynamic = false
+                
                 self.addChild(BulletRS)
                 self.addChild(BulletLS)
                 self.addChild(BulletR)
                 self.addChild(BulletL)
+                
+                
+                
+                
+            }else if gun_mode == 4{
+                
+                
+            }else if gun_mode == 5{
+                
+                
             }
-            
-            
-            
-        }else if gun_mode == 4{
-            
-            
-        }else if gun_mode == 5{
-            
-            
         }
         //self.addChild(Bullet)
         
@@ -726,6 +812,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func ShowBlast(){
         if gun_mode == 21 {
+            let path = NSBundle.mainBundle().pathForResource("gameSounds/blast2.wav", ofType:nil)!
+            let url = NSURL(fileURLWithPath: path)
+            
+            do {
+                let sound = try AVAudioPlayer(contentsOfURL: url)
+                audioSpecial = sound
+                sound.volume = 0.45
+                sound.play()
+            } catch {
+                // couldn't load file :(
+            }
+
             blastTimer -= 1
             let Blaster = SKSpriteNode(imageNamed: "BlastBullet.png")
             let Blast = SKSpriteNode(imageNamed: "Lazor_ring.png")
@@ -740,7 +838,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             Blast3.setScale(0.05)
             Blast3.zPosition = 2
             Blast3.position = CGPointMake(Player.position.x, Player.position.y + 60)
-//            Blaster.setScale(0.5)
+            //            Blaster.setScale(0.5)
             Blaster.zPosition = -5
             Blaster.position = CGPointMake(Player.position.x, Player.position.y + 40)
             
@@ -812,6 +910,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func ShowLazor(){
         if lazorTimer == 50{
+            let path = NSBundle.mainBundle().pathForResource("gameSounds/lazor.mp3", ofType:nil)!
+            let url = NSURL(fileURLWithPath: path)
+            
+            do {
+                let sound = try AVAudioPlayer(contentsOfURL: url)
+                audioSpecial = sound
+                sound.volume = 0.45
+                sound.play()
+            } catch {
+                // couldn't load file :(
+            }
+
             Lazor_head.runAction(SKAction.animateWithTextures(TextureArray_LazorHead, timePerFrame: 0.06))
             Lazor_beam.runAction(SKAction.animateWithTextures(TextureArray_LazorBeam, timePerFrame: 0.06))
             self.addChild(Lazor_head)
@@ -837,9 +947,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let BeamBack = SKSpriteNode(imageNamed: "back_beam_rear_right1.png")
         let BeamFront = SKSpriteNode(imageNamed: "back_beam_front_right1.png")
-//        BeamBack.setScale(0.4)
+        //        BeamBack.setScale(0.4)
         BeamBack.zPosition = 4
-//        BeamFront.setScale(0.4)
+        //        BeamFront.setScale(0.4)
         BeamFront.zPosition = 5
         
         
@@ -961,7 +1071,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         do {
             let sound = try AVAudioPlayer(contentsOfURL: url)
             audioPlayer = sound
-            sound.volume = 0.65
+//            sound.volume = 0.85
             sound.play()
             sound.numberOfLoops = -1
         } catch {
@@ -989,14 +1099,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //            lazorTimer = 5
         //        }
         
-                if gun_mode == 22 {
-        
-                    Lazor_head.position.x = Player.position.x
-                    Lazor_head.position.y = Player.position.y + 80
-                    Lazor_beam.position.x = Player.position.x
-                    Lazor_beam.position.y = Player.position.y + 626
-                }
-//                else{
+        if gun_mode == 22 {
+            
+            Lazor_head.position.x = Player.position.x
+            Lazor_head.position.y = Player.position.y + 80
+            Lazor_beam.position.x = Player.position.x
+            Lazor_beam.position.y = Player.position.y + 626
+        }
+        //                else{
         //            Lazor_head.position.x = self.size.width + 100
         //            Lazor_head.position.y = self.size.height+2000
         //            Lazor_beam.position.x = self.size.width + 100
